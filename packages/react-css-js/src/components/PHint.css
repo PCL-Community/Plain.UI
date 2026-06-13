@@ -1,0 +1,78 @@
+.phint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.phint__text {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: -1px;
+}
+
+.phint__close {
+    padding: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+
+.phint__close:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.phint__close-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Theme: Blue */
+.phint--blue {
+    border-left-color: #60a5fa;
+    background-color: #eff6ff;
+}
+
+.phint--blue .phint__text {
+    color: #2563eb;
+}
+
+.phint--blue .phint__close {
+    color: #60a5fa;
+}
+
+/* Theme: Red */
+.phint--red {
+    border-left-color: #f87171;
+    background-color: #fef2f2;
+}
+
+.phint--red .phint__text {
+    color: #dc2626;
+}
+
+.phint--red .phint__close {
+    color: #f87171;
+}
+
+/* Theme: Yellow */
+.phint--yellow {
+    border-left-color: #facc15;
+    background-color: #fefce8;
+}
+
+.phint--yellow .phint__text {
+    color: #a16207;
+}
+
+.phint--yellow .phint__close {
+    color: #eab308;
+}

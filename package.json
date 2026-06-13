@@ -1,0 +1,48 @@
+{
+    "name": "@pcl-community/plain-ui-monorepo",
+    "version": "1.0.0",
+    "description": "Plain UI - 支持多种技术栈组合的 UI 组件库",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "turbo run dev",
+        "dev:vue-css-ts": "turbo run dev --filter @pcl-community/plain-ui-vue-css-ts",
+        "dev:vue-tailwind-ts": "turbo run dev --filter @pcl-community/plain-ui-vue-tailwind-ts",
+        "dev:vue-css-js": "turbo run dev --filter @pcl-community/plain-ui-vue-css-js",
+        "dev:vue-tailwind-js": "turbo run dev --filter @pcl-community/plain-ui-vue-tailwind-js",
+        "dev:react-css-ts": "turbo run dev --filter @pcl-community/plain-ui-react-css-ts",
+        "dev:react-tailwind-ts": "turbo run dev --filter @pcl-community/plain-ui-react-tailwind-ts",
+        "dev:react-css-js": "turbo run dev --filter @pcl-community/plain-ui-react-css-js",
+        "dev:react-tailwind-js": "turbo run dev --filter @pcl-community/plain-ui-react-tailwind-js",
+        "build": "turbo run build",
+        "build:vue-css-ts": "turbo run build --filter @pcl-community/plain-ui-vue-css-ts",
+        "build:vue-tailwind-ts": "turbo run build --filter @pcl-community/plain-ui-vue-tailwind-ts",
+        "build:vue-css-js": "turbo run build --filter @pcl-community/plain-ui-vue-css-js",
+        "build:vue-tailwind-js": "turbo run build --filter @pcl-community/plain-ui-vue-tailwind-js",
+        "build:react-css-ts": "turbo run build --filter @pcl-community/plain-ui-react-css-ts",
+        "build:react-tailwind-ts": "turbo run build --filter @pcl-community/plain-ui-react-tailwind-ts",
+        "build:react-css-js": "turbo run build --filter @pcl-community/plain-ui-react-css-js",
+        "build:react-tailwind-js": "turbo run build --filter @pcl-community/plain-ui-react-tailwind-js",
+        "build:all": "turbo run build",
+        "lint": "turbo run lint",
+        "lint:fix": "turbo run lint:fix",
+        "clean": "turbo run clean",
+        "format": "prettier --write **/*.{ts,tsx,vue,js,jsx,html,json}",
+        "changeset": "changeset",
+        "version-packages": "changeset version",
+        "release": "pnpm build && changeset publish"
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.31.0",
+        "@types/node": "^20.19.43",
+        "eslint": "^8.57.1",
+        "prettier": "^3.8.4",
+        "turbo": "^2.9.18",
+        "typescript": "^5.9.3"
+    },
+    "engines": {
+        "node": ">=18.0.0",
+        "pnpm": ">=8.0.0"
+    },
+    "packageManager": "pnpm@11.0.5"
+}

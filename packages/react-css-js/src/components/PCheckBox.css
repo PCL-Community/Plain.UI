@@ -1,0 +1,97 @@
+.pcheckbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pcheckbox--disabled {
+    cursor: not-allowed;
+}
+
+.pcheckbox__box {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 100ms ease-out, background-color 150ms, border-color 150ms;
+}
+
+.pcheckbox__check {
+    width: 12px;
+    height: 12px;
+    transition: transform 100ms ease-out;
+}
+
+.pcheckbox__indeterminate {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    transition: transform 100ms ease-out;
+}
+
+.pcheckbox__text {
+    font-size: 13px;
+    transition: color 150ms;
+}
+
+/* Checked state */
+.pcheckbox__box--checked {
+    border-color: #60a5fa;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.pcheckbox__box--checked-hovered {
+    border-color: #3b82f6;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Unchecked state */
+.pcheckbox__box--unchecked {
+    border-color: #60a5fa;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.pcheckbox__box--unchecked-hovered {
+    border-color: #3b82f6;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Disabled state */
+.pcheckbox__box--disabled {
+    border-color: #9ca3af;
+    background-color: #f3f4f6;
+}
+
+.pcheckbox__check--disabled {
+    color: #9ca3af;
+}
+
+.pcheckbox__indeterminate--disabled {
+    background-color: #9ca3af;
+}
+
+.pcheckbox__text--disabled {
+    color: #9ca3af;
+}
+
+.pcheckbox__text--normal {
+    color: #60a5fa;
+}
+
+.pcheckbox__text--hovered {
+    color: #3b82f6;
+}
+
+.pcheckbox__check {
+    color: #60a5fa;
+}
+
+.pcheckbox__indeterminate {
+    background-color: #60a5fa;
+}

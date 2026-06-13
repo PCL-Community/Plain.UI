@@ -1,0 +1,65 @@
+.pradiobutton {
+    display: inline-flex;
+    align-items: center;
+    min-height: 27px;
+    max-height: 27px;
+    padding: 0 12px;
+    border-radius: 9999px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: all 200ms ease;
+}
+
+.pradiobutton:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+.pradiobutton--disabled {
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+}
+
+.pradiobutton--checked {
+    background-color: #60a5fa;
+}
+
+.pradiobutton--hovered {
+    background-color: #dbeafe;
+}
+
+.pradiobutton__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    color: #60a5fa;
+}
+
+.pradiobutton--checked .pradiobutton__icon {
+    color: white;
+}
+
+.pradiobutton--disabled .pradiobutton__icon {
+    color: #9ca3af;
+}
+
+.pradiobutton__text {
+    font-size: 13px;
+    white-space: nowrap;
+    color: #60a5fa;
+}
+
+.pradiobutton--checked .pradiobutton__text {
+    color: white;
+}
+
+.pradiobutton--hovered .pradiobutton__text {
+    color: #3b82f6;
+}
+
+.pradiobutton--disabled .pradiobutton__text {
+    color: #9ca3af;
+}

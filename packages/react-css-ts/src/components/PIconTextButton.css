@@ -1,0 +1,40 @@
+.pictextbutton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    min-height: 27px;
+    max-height: 27px;
+    border-radius: 13.5px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+    transition: transform 80ms ease-out, opacity 150ms ease;
+}
+
+.pictextbutton:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+.pictextbutton--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pictextbutton:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.pictextbutton__icon {
+    flex-shrink: 0;
+    color: white;
+    transition: transform 80ms ease-out;
+}
+
+.pictextbutton__text {
+    font-size: 13px;
+    color: white;
+    white-space: nowrap;
+}

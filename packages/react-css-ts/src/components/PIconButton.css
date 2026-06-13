@@ -1,0 +1,48 @@
+.piconbutton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: transform 80ms ease-out, background-color 150ms;
+}
+
+.piconbutton:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+.piconbutton--disabled {
+    background-color: #f3f4f6;
+    cursor: not-allowed;
+}
+
+.piconbutton--hovered {
+    background-color: #eff6ff;
+}
+
+.piconbutton--pressed {
+    background-color: #dbeafe;
+    transform: scale(0.92);
+}
+
+.piconbutton__icon {
+    transition: transform 80ms ease-out, color 150ms;
+    color: #60a5fa;
+}
+
+.piconbutton--disabled .piconbutton__icon {
+    color: #9ca3af;
+}
+
+.piconbutton--hovered .piconbutton__icon {
+    color: #60a5fa;
+}
+
+.piconbutton--pressed .piconbutton__icon {
+    color: #3b82f6;
+    transform: scale(0.95);
+}

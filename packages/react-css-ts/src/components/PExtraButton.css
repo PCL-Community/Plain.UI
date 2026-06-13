@@ -1,0 +1,61 @@
+.pextrabutton {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    background: none;
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pextrabutton:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+.pextrabutton--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pextrabutton__bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: #60a5fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 150ms ease;
+}
+
+.pextrabutton__bg--pressed {
+    background-color: #3b82f6;
+}
+
+.pextrabutton__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: height 300ms ease;
+}
+
+.pextrabutton__icon-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pextrabutton__icon {
+    transition: transform 80ms ease-out;
+    color: white;
+}
+
+.pextrabutton__icon--disabled {
+    color: rgba(255, 255, 255, 0.5);
+}

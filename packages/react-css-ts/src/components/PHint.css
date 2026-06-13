@@ -1,0 +1,35 @@
+.phint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-radius: 0 4px 4px 0;
+}
+
+.phint__text {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: -1px;
+}
+
+.phint__close {
+    padding: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+}
+
+.phint__close:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.phint__close-icon {
+    width: 16px;
+    height: 16px;
+}

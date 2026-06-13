@@ -1,0 +1,117 @@
+.psearchbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #bfdbfe;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    transition: all 200ms ease;
+}
+
+.psearchbox:hover:not(.psearchbox--disabled) {
+    border-color: #93c5fd;
+}
+
+.psearchbox--disabled {
+    border-color: #d1d5db;
+    background-color: #f9fafb;
+}
+
+.psearchbox--focused {
+    border-color: #60a5fa;
+}
+
+.psearchbox__search-icon {
+    position: absolute;
+    left: 14px;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    z-index: 10;
+    color: #60a5fa;
+}
+
+.psearchbox__search-icon--disabled {
+    color: #9ca3af;
+}
+
+.psearchbox__input {
+    flex: 1;
+    height: 100%;
+    padding-left: 40px;
+    padding-right: 12px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #374151;
+}
+
+.psearchbox__input::placeholder {
+    color: #9ca3af;
+}
+
+.psearchbox__input:disabled {
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.psearchbox__clear {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #60a5fa;
+    transition: all 150ms ease;
+}
+
+.psearchbox__clear:hover {
+    color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.psearchbox__clear--with-btn {
+    right: 70px;
+}
+
+.psearchbox__clear-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.psearchbox__btn {
+    height: 32px;
+    padding: 0 16px;
+    margin-right: 4px;
+    border-radius: 3px;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #60a5fa;
+    color: white;
+    transition: all 150ms ease;
+}
+
+.psearchbox__btn:hover:not(:disabled) {
+    background-color: #3b82f6;
+}
+
+.psearchbox__btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.psearchbox__btn:disabled {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}

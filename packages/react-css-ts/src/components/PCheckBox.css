@@ -1,0 +1,92 @@
+.pcheckbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pcheckbox--disabled {
+    cursor: not-allowed;
+}
+
+.pcheckbox__box {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid #60a5fa;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 100ms ease-out, background-color 150ms, border-color 150ms;
+}
+
+.pcheckbox__box.pcheckbox--hovered,
+.pcheckbox__box.pcheckbox--checked-hovered {
+    border-color: #3b82f6;
+}
+
+.pcheckbox__box.pcheckbox--checked,
+.pcheckbox__box.pcheckbox--checked-hovered {
+    border-color: #60a5fa;
+}
+
+.pcheckbox__box.pcheckbox--disabled {
+    border-color: #9ca3af;
+    background-color: #f3f4f6;
+}
+
+.pcheckbox__box.pcheckbox--pressed {
+    transform: scale(0.92);
+}
+
+.pcheckbox__box.pcheckbox--pressed.pcheckbox--checked {
+    background-color: #dbeafe;
+}
+
+.pcheckbox__check {
+    width: 12px;
+    height: 12px;
+    color: #60a5fa;
+    transition: transform 100ms ease-out;
+}
+
+.pcheckbox__box.pcheckbox--disabled .pcheckbox__check {
+    color: #9ca3af;
+}
+
+.pcheckbox__box.pcheckbox--pressed .pcheckbox__check {
+    transform: scale(0.9);
+}
+
+.pcheckbox__indeterminate {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: #60a5fa;
+    transition: transform 100ms ease-out;
+}
+
+.pcheckbox__box.pcheckbox--disabled .pcheckbox__indeterminate {
+    background-color: #9ca3af;
+}
+
+.pcheckbox__box.pcheckbox--pressed .pcheckbox__indeterminate {
+    transform: scale(0.9);
+}
+
+.pcheckbox__text {
+    font-size: 13px;
+    color: #60a5fa;
+    transition: color 150ms;
+}
+
+.pcheckbox__text--hovered {
+    color: #3b82f6;
+}
+
+.pcheckbox--disabled .pcheckbox__text {
+    color: #9ca3af;
+}
