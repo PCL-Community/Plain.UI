@@ -11,18 +11,19 @@ concurrency:
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
+      packages: write
       pull-requests: write
       id-token: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -33,8 +34,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: pnpm
-          registry-url: https://registry.npmjs.org/
+          cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -42,21 +43,57 @@ jobs:
       - name: Build packages
         run: pnpm build:all
 
-      - name: Release with Changesets
+      - name: Create Release Pull Request or Publish to GitHub Registry
         id: changesets
         uses: changesets/action@v1
         with:
           version: pnpm version-packages
-          publish: pnpm changeset publish
-          commit: "chore: version packages"
-          title: "chore: version packages"
+          publish: pnpm release
+          commit: 'chore: version packages'
+          title: 'chore: version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Notify
+      - name: Send notification
         if: steps.changesets.outputs.published == 'true'
         run: |
-          echo "🎉 Published successfully!"
-          echo "${{ steps.changesets.outputs.publishedPackages }}"
+          echo "🎉 Packages published successfully!"
+          echo "Published packages: ${{ steps.changesets.outputs.publishedPackages }}"
+
+  changelog:
+    name: Update Changelog
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.0.5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate changelog
+        run: pnpm changeset status --output=changelog-status.json || true
+
+      - name: Upload changelog artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: changelog-status
+          path: changelog-status.json
+          retention-days: 30
