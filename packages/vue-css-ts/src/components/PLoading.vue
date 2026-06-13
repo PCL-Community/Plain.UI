@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
 
 export type PLoadingState = "loading" | "success" | "error";
 
@@ -43,7 +43,6 @@ const rotation = ref(55);
 const sparkles = ref({ left: false, right: false });
 const errorScale = ref(0);
 let animationRef: number | null = null;
-let phaseRef: "idle" | "windup" | "strike" | "bounce" | "sparkle" = "idle";
 let startTimeRef: number | undefined;
 
 const runAnimationCycle = () => {
@@ -61,21 +60,18 @@ const runAnimationCycle = () => {
 
         if (elapsed < 350) {
             // 阶段1: 向后仰 (从55度到35度)
-            phaseRef = "windup";
             const progress = elapsed / 350;
             const eased = easeInBack(progress);
             rotation.value = 55 - 20 * eased;
             sparkles.value = { left: false, right: false };
         } else if (elapsed < 900) {
             // 阶段2: 砸下去 (从35度到-15度)
-            phaseRef = "strike";
             const progress = (elapsed - 350) / 550;
             const eased = easeOutFluent(progress);
             rotation.value = 35 - 50 * eased;
             sparkles.value = { left: false, right: false };
         } else if (elapsed < 1200) {
             // 阶段3: 火花效果 (镐子保持在-15度)
-            phaseRef = "sparkle";
             rotation.value = -15;
             const sparkleProgress = (elapsed - 900) / 300;
             sparkles.value = {
@@ -84,7 +80,6 @@ const runAnimationCycle = () => {
             };
         } else if (elapsed < 2100) {
             // 阶段4: 抬起来 (从-15度回到55度)
-            phaseRef = "bounce";
             const progress = (elapsed - 1200) / 900;
             const eased = easeOutElastic(progress);
             rotation.value = -15 + 70 * eased;
