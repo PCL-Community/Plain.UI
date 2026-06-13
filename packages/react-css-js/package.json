@@ -1,6 +1,6 @@
 {
     "name": "@pcl-community/plain-ui-react-css-js",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plain UI - React + CSS + JavaScript",
     "type": "module",
     "main": "./dist/index.umd.cjs",

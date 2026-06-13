@@ -1,6 +1,6 @@
 {
     "name": "@pcl-community/plain-ui-react-tailwind-js",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plain UI - React + TailwindCSS + JavaScript",
     "type": "module",
     "main": "./dist/index.umd.cjs",
