@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import "../styles/theme.css";
 
 const props = defineProps({
     /** 按钮文本 */

@@ -2,6 +2,15 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
 import { resolve } from "path";
+import { copyFileSync } from "fs";
+
+// 自定义插件：复制主题 CSS 到 dist 目录
+const copyThemeCss = () => ({
+    name: "copy-theme-css",
+    closeBundle() {
+        copyFileSync(resolve(__dirname, "src/styles/theme.css"), resolve(__dirname, "dist/theme.css"));
+    },
+});
 
 export default defineConfig({
     plugins: [
@@ -9,6 +18,7 @@ export default defineConfig({
         dts({
             insertTypesEntry: true,
         }),
+        copyThemeCss(),
     ],
     server: {
         port: 4405,

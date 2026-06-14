@@ -4,15 +4,15 @@
 
 ## 技术栈组合
 
-| 框架 | 样式方案 | 语言 | 包名 | 开发命令 |
-|------|----------|------|------|----------|
-| Vue 3 | CSS | TypeScript | `@pcl-community/plain-ui-vue-css-ts` | `pnpm dev:vue-css-ts` |
-| Vue 3 | TailwindCSS | TypeScript | `@pcl-community/plain-ui-vue-tailwind-ts` | `pnpm dev:vue-tailwind-ts` |
-| Vue 3 | CSS | JavaScript | `@pcl-community/plain-ui-vue-css-js` | `pnpm dev:vue-css-js` |
-| Vue 3 | TailwindCSS | JavaScript | `@pcl-community/plain-ui-vue-tailwind-js` | `pnpm dev:vue-tailwind-js` |
-| React 18 | CSS | TypeScript | `@pcl-community/plain-ui-react-css-ts` | `pnpm dev:react-css-ts` |
+| 框架     | 样式方案    | 语言       | 包名                                        | 开发命令                     |
+| -------- | ----------- | ---------- | ------------------------------------------- | ---------------------------- |
+| Vue 3    | CSS         | TypeScript | `@pcl-community/plain-ui-vue-css-ts`        | `pnpm dev:vue-css-ts`        |
+| Vue 3    | TailwindCSS | TypeScript | `@pcl-community/plain-ui-vue-tailwind-ts`   | `pnpm dev:vue-tailwind-ts`   |
+| Vue 3    | CSS         | JavaScript | `@pcl-community/plain-ui-vue-css-js`        | `pnpm dev:vue-css-js`        |
+| Vue 3    | TailwindCSS | JavaScript | `@pcl-community/plain-ui-vue-tailwind-js`   | `pnpm dev:vue-tailwind-js`   |
+| React 18 | CSS         | TypeScript | `@pcl-community/plain-ui-react-css-ts`      | `pnpm dev:react-css-ts`      |
 | React 18 | TailwindCSS | TypeScript | `@pcl-community/plain-ui-react-tailwind-ts` | `pnpm dev:react-tailwind-ts` |
-| React 18 | CSS | JavaScript | `@pcl-community/plain-ui-react-css-js` | `pnpm dev:react-css-js` |
+| React 18 | CSS         | JavaScript | `@pcl-community/plain-ui-react-css-js`      | `pnpm dev:react-css-js`      |
 | React 18 | TailwindCSS | JavaScript | `@pcl-community/plain-ui-react-tailwind-js` | `pnpm dev:react-tailwind-js` |
 
 ## 快速开始

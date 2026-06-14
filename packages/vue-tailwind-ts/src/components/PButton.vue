@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import "../styles/theme.css";
 
 export type PButtonColorState = "Normal" | "Highlight" | "Red";
 

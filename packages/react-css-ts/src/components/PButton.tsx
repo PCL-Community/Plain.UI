@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import "./PButton.css";
+import "../styles/theme.css";
 
 export type PButtonColorState = "Normal" | "Highlight" | "Red";
 

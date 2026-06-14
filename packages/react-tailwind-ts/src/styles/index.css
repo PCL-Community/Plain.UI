@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+/* Plain UI - Main Styles Entry */
+@import "./theme.css";
+

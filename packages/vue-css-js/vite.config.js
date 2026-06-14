@@ -1,9 +1,21 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
+import { copyFileSync } from "fs";
+
+// 自定义插件：复制主题 CSS 到 dist 目录
+const copyThemeCss = () => ({
+    name: "copy-theme-css",
+    closeBundle() {
+        copyFileSync(
+            resolve(__dirname, "src/styles/theme.css"),
+            resolve(__dirname, "dist/theme.css")
+        );
+    },
+});
 
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [vue(), copyThemeCss()],
     server: {
         port: 4404,
     },

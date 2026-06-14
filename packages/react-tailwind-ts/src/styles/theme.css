@@ -1,0 +1,106 @@
+/* Plain UI - MultiTheme CSS Variables */
+
+/* ========== Light Theme | Color Sky ========== */
+:root.light.color-sky {
+    --color-brush-1: rgba(1, 16, 31, 1);
+    --color-brush-2: rgba(0, 97, 223, 1);
+    --color-brush-3: rgba(0, 118, 255, 1);
+    --color-brush-4: rgba(3, 141, 255, 1);
+    --color-brush-5: rgba(74, 190, 255, 1);
+    --color-brush-6: rgba(155, 232, 255, 1);
+    --color-brush-7: rgba(171, 240, 255, 1);
+    --color-brush-8: rgba(187, 247, 255, 1);
+    --color-brush-semi-transparent: rgba(187, 247, 255, 0.004);
+    --color-brush-bg0: rgba(74, 190, 255, 1);
+    --color-brush-bg1: rgba(171, 240, 255, 0.733);
+}
+
+/* ========== Light Theme | Color Cat ========== */
+:root.light.color-cat {
+    --color-brush-1: rgba(8, 11, 16, 1);
+    --color-brush-2: rgba(2, 31, 119, 1);
+    --color-brush-3: rgba(4, 48, 179, 1);
+    --color-brush-4: rgba(22, 72, 188, 1);
+    --color-brush-5: rgba(87, 135, 217, 1);
+    --color-brush-6: rgba(175, 202, 240, 1);
+    --color-brush-7: rgba(193, 214, 245, 1);
+    --color-brush-8: rgba(213, 227, 247, 1);
+    --color-brush-semi-transparent: rgba(213, 227, 247, 0.004);
+    --color-brush-bg0: rgba(87, 135, 217, 1);
+    --color-brush-bg1: rgba(193, 214, 245, 0.733);
+}
+
+/* ========== Light Theme | Color Dead ========== */
+:root.light.color-dead {
+    --color-brush-1: rgba(9, 11, 16, 1);
+    --color-brush-2: rgba(9, 21, 125, 1);
+    --color-brush-3: rgba(14, 32, 187, 1);
+    --color-brush-4: rgba(29, 54, 190, 1);
+    --color-brush-5: rgba(83, 110, 204, 1);
+    --color-brush-6: rgba(154, 170, 213, 1);
+    --color-brush-7: rgba(169, 182, 216, 1);
+    --color-brush-8: rgba(185, 194, 216, 1);
+    --color-brush-semi-transparent: rgba(185, 194, 216, 0.004);
+    --color-brush-bg0: rgba(83, 110, 204, 1);
+    --color-brush-bg1: rgba(169, 182, 216, 0.733);
+}
+
+/* ========== Dark Theme | Color Sky ========== */
+:root.dark.color-sky {
+    --color-brush-1: rgba(171, 240, 255, 1);
+    --color-brush-2: rgba(46, 173, 255, 1);
+    --color-brush-3: rgba(0, 126, 255, 1);
+    --color-brush-4: rgba(3, 141, 255, 1);
+    --color-brush-5: rgba(0, 84, 194, 1);
+    --color-brush-6: rgba(0, 43, 103, 1);
+    --color-brush-7: rgba(0, 39, 95, 1);
+    --color-brush-8: rgba(0, 36, 86, 1);
+    --color-brush-semi-transparent: rgba(0, 36, 86, 0.004);
+    --color-brush-bg0: rgba(0, 84, 194, 1);
+    --color-brush-bg1: rgba(0, 39, 95, 0.733);
+}
+
+/* ========== Dark Theme | Color Cat ========== */
+:root.dark.color-cat {
+    --color-brush-1: rgba(205, 229, 255, 1);
+    --color-brush-2: rgba(35, 111, 255, 1);
+    --color-brush-3: rgba(6, 55, 195, 1);
+    --color-brush-4: rgba(22, 72, 188, 1);
+    --color-brush-5: rgba(10, 24, 53, 1);
+    --color-brush-6: rgba(2, 4, 7, 1);
+    --color-brush-7: rgba(2, 3, 5, 1);
+    --color-brush-8: rgba(2, 2, 3, 1);
+    --color-brush-semi-transparent: rgba(2, 2, 3, 0.004);
+    --color-brush-bg0: rgba(10, 24, 53, 1);
+    --color-brush-bg1: rgba(2, 3, 5, 0.733);
+}
+
+/* ========== Dark Theme | Color Dead ========== */
+:root.dark.color-dead {
+    --color-brush-1: rgba(208, 222, 255, 1);
+    --color-brush-2: rgba(45, 83, 255, 1);
+    --color-brush-3: rgba(16, 37, 203, 1);
+    --color-brush-4: rgba(29, 54, 190, 1);
+    --color-brush-5: rgba(11, 19, 52, 1);
+    --color-brush-6: rgba(2, 3, 7, 1);
+    --color-brush-7: rgba(2, 2, 5, 1);
+    --color-brush-8: rgba(1, 2, 3, 1);
+    --color-brush-semi-transparent: rgba(1, 2, 3, 0.004);
+    --color-brush-bg0: rgba(11, 19, 52, 1);
+    --color-brush-bg1: rgba(2, 2, 5, 0.733);
+}
+
+/* ========== Default Theme (Light Sky) ========== */
+:root {
+    --color-brush-1: rgba(1, 16, 31, 1);
+    --color-brush-2: rgba(0, 97, 223, 1);
+    --color-brush-3: rgba(0, 118, 255, 1);
+    --color-brush-4: rgba(3, 141, 255, 1);
+    --color-brush-5: rgba(74, 190, 255, 1);
+    --color-brush-6: rgba(155, 232, 255, 1);
+    --color-brush-7: rgba(171, 240, 255, 1);
+    --color-brush-8: rgba(187, 247, 255, 1);
+    --color-brush-semi-transparent: rgba(187, 247, 255, 0.004);
+    --color-brush-bg0: rgba(74, 190, 255, 1);
+    --color-brush-bg1: rgba(171, 240, 255, 0.733);
+}

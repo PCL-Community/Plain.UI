@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { clsx } from "clsx";
+import "../styles/theme.css";
 
 export const PButton = ({
     Text,

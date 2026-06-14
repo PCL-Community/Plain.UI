@@ -1,10 +1,21 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import libInjectCss from "vite-plugin-lib-inject-style";
 import { resolve } from "path";
+import { copyFileSync } from "fs";
+
+// 自定义插件：复制主题 CSS 到 dist 目录
+const copyThemeCss = () => ({
+    name: "copy-theme-css",
+    closeBundle() {
+        copyFileSync(
+            resolve(__dirname, "src/styles/theme.css"),
+            resolve(__dirname, "dist/theme.css")
+        );
+    },
+});
 
 export default defineConfig({
-    plugins: [react(), libInjectCss()],
+    plugins: [react(), copyThemeCss()],
     server: {
         port: 4400,
     },
@@ -22,12 +33,7 @@ export default defineConfig({
                     react: "React",
                     "react-dom": "ReactDOM",
                 },
-                assetFileNames: (assetInfo) => {
-                    if (assetInfo.name === "style.css") return "style.css";
-                    return assetInfo.name;
-                },
             },
         },
-        cssCodeSplit: false,
     },
 });
