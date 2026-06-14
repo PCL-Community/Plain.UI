@@ -1,33 +1,16 @@
 .pradiobutton {
     display: inline-flex;
     align-items: center;
-    min-height: 27px;
-    max-height: 27px;
-    padding: 0 12px;
     border-radius: 9999px;
     border: none;
-    background-color: transparent;
+    background: transparent;
     cursor: pointer;
     outline: none;
     transition: all 200ms ease;
 }
 
 .pradiobutton:focus-visible {
-    outline: 2px solid #60a5fa;
-    outline-offset: 2px;
-}
-
-.pradiobutton--disabled {
-    background-color: #e5e7eb;
-    cursor: not-allowed;
-}
-
-.pradiobutton--checked {
-    background-color: #60a5fa;
-}
-
-.pradiobutton--hovered {
-    background-color: #dbeafe;
+    box-shadow: 0 0 0 2px var(--color-shadow-focus);
 }
 
 .pradiobutton__icon {
@@ -35,31 +18,59 @@
     height: 16px;
     margin-right: 8px;
     flex-shrink: 0;
-    color: #60a5fa;
-}
-
-.pradiobutton--checked .pradiobutton__icon {
-    color: white;
-}
-
-.pradiobutton--disabled .pradiobutton__icon {
-    color: #9ca3af;
+    transition: color 200ms;
 }
 
 .pradiobutton__text {
     font-size: 13px;
     white-space: nowrap;
-    color: #60a5fa;
+    transition: color 200ms;
 }
 
-.pradiobutton--checked .pradiobutton__text {
-    color: white;
+/* Normal state */
+.pradiobutton--normal {
+    background-color: transparent;
 }
 
-.pradiobutton--hovered .pradiobutton__text {
-    color: #3b82f6;
+.pradiobutton--hovered {
+    background-color: var(--color-primary-bg-solid);
 }
 
-.pradiobutton--disabled .pradiobutton__text {
-    color: #9ca3af;
+.pradiobutton--checked {
+    background-color: var(--color-primary-light);
+}
+
+.pradiobutton--disabled {
+    background-color: var(--color-bg-gray);
+    cursor: not-allowed;
+}
+
+/* Text colors */
+.pradiobutton__text--normal {
+    color: var(--color-primary-light);
+}
+
+.pradiobutton__text--hovered {
+    color: var(--color-primary-hover);
+}
+
+.pradiobutton__text--checked {
+    color: var(--color-text-inverse);
+}
+
+.pradiobutton__text--disabled {
+    color: var(--color-text-disabled);
+}
+
+/* Icon colors */
+.pradiobutton__icon--normal {
+    color: var(--color-primary-light);
+}
+
+.pradiobutton__icon--checked {
+    color: var(--color-text-inverse);
+}
+
+.pradiobutton__icon--disabled {
+    color: var(--color-text-disabled);
 }

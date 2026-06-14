@@ -6,7 +6,7 @@
     border-radius: 3px;
     cursor: pointer;
     user-select: none;
-    transition: transform 80ms ease-out, background-color 150ms ease;
+    transition: transform 80ms ease-out, background-color 150ms;
 }
 
 .plistitem--disabled {
@@ -15,7 +15,7 @@
 }
 
 .plistitem--hovered {
-    background-color: #eff6ff;
+    background-color: var(--color-bg-hover);
 }
 
 .plistitem__indicator {
@@ -23,12 +23,15 @@
     height: 24px;
     border-radius: 9999px;
     margin-right: 8px;
-    background-color: transparent;
-    transition: all 200ms ease;
+    transition: all 200ms;
 }
 
 .plistitem__indicator--checked {
-    background-color: #60a5fa;
+    background-color: var(--color-primary-light);
+}
+
+.plistitem__indicator--normal {
+    background-color: transparent;
 }
 
 .plistitem__icon {
@@ -36,16 +39,19 @@
     height: 16px;
     margin-right: 12px;
     flex-shrink: 0;
-    color: #9ca3af;
-    transition: color 150ms ease;
+    transition: color 150ms;
 }
 
 .plistitem__icon--checked {
-    color: #60a5fa;
+    color: var(--color-primary-light);
+}
+
+.plistitem__icon--normal {
+    color: var(--color-text-secondary);
 }
 
 .plistitem__icon--hovered {
-    color: #93c5fd;
+    color: var(--color-primary-lighter);
 }
 
 .plistitem__content {
@@ -58,22 +64,25 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #374151;
-    transition: color 150ms ease;
+    transition: color 150ms;
 }
 
 .plistitem__title--checked {
-    color: #3b82f6;
+    color: var(--color-primary-hover);
     font-weight: 500;
 }
 
+.plistitem__title--normal {
+    color: var(--color-text-primary);
+}
+
 .plistitem__title--hovered {
-    color: #60a5fa;
+    color: var(--color-primary-light);
 }
 
 .plistitem__info {
     font-size: 12px;
-    color: #9ca3af;
+    color: var(--color-text-secondary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

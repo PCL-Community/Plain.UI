@@ -1,0 +1,654 @@
+/* Plain UI - Tailwind CSS Variables Components */
+
+/* Button Styles */
+.p-btn {
+    @apply relative inline-flex items-center justify-center rounded-[3px] border transition-all duration-200 ease-out focus:outline-none;
+}
+
+.p-btn--normal {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-bg);
+}
+
+.p-btn--normal:hover:not(:disabled) {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-bg-hover);
+}
+
+.p-btn--highlight {
+    border-color: var(--color-primary-lighter);
+    background-color: var(--color-bg);
+}
+
+.p-btn--highlight:hover:not(:disabled) {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-bg-hover);
+}
+
+.p-btn--red {
+    border-color: var(--color-danger);
+    background-color: var(--color-bg);
+}
+
+.p-btn--red:hover:not(:disabled) {
+    border-color: var(--color-danger-hover);
+    background-color: var(--color-danger-bg);
+}
+
+.p-btn:disabled {
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-disabled);
+    cursor: not-allowed;
+}
+
+.p-btn__text {
+    @apply text-[13px] font-medium whitespace-nowrap transition-colors duration-200;
+}
+
+.p-btn__text--normal {
+    color: var(--color-primary-light);
+}
+
+.p-btn__text--normal:hover:not(:disabled) {
+    color: var(--color-primary-hover);
+}
+
+.p-btn__text--highlight {
+    color: var(--color-primary-lighter);
+}
+
+.p-btn__text--highlight:hover:not(:disabled) {
+    color: var(--color-primary-hover);
+}
+
+.p-btn__text--red {
+    color: var(--color-danger);
+}
+
+.p-btn__text--red:hover:not(:disabled) {
+    color: var(--color-danger-hover);
+}
+
+.p-btn__text:disabled {
+    color: var(--color-text-disabled);
+}
+
+/* TextBox Styles */
+.p-textbox {
+    @apply flex flex-col gap-1;
+}
+
+.p-textbox__container {
+    @apply relative flex items-center border transition-all duration-200;
+}
+
+.p-textbox__container--normal {
+    border-color: var(--color-primary-lighter);
+    background-color: var(--color-bg);
+}
+
+.p-textbox__container--hovered {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-bg-hover);
+}
+
+.p-textbox__container--focused {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-bg-hover);
+}
+
+.p-textbox__container--disabled {
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-disabled);
+}
+
+.p-textbox__container--error {
+    border-color: var(--color-danger-hover);
+    background-color: var(--color-danger-bg);
+}
+
+.p-textbox__input {
+    @apply w-full px-3 py-2 text-[13px] bg-transparent outline-none;
+}
+
+.p-textbox__input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.p-textbox__input--normal {
+    color: var(--color-text-primary);
+}
+
+.p-textbox__input--disabled {
+    color: var(--color-text-disabled);
+}
+
+.p-textbox__input--error {
+    color: var(--color-danger);
+}
+
+.p-textbox__hint {
+    @apply absolute left-3 text-[13px] pointer-events-none;
+    color: var(--color-text-secondary);
+}
+
+.p-textbox__error {
+    @apply text-[12px] animate-fadeIn;
+    color: var(--color-danger);
+}
+
+/* CheckBox Styles */
+.p-checkbox {
+    @apply inline-flex items-center gap-2 cursor-pointer select-none;
+}
+
+.p-checkbox--disabled {
+    @apply cursor-not-allowed;
+}
+
+.p-checkbox__box {
+    @apply relative w-4.5 h-4.5 rounded-[3px] border flex items-center justify-center transition-all duration-150;
+}
+
+.p-checkbox__box--checked {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-bg);
+}
+
+.p-checkbox__box--checked-hovered {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-bg);
+}
+
+.p-checkbox__box--unchecked {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-bg);
+}
+
+.p-checkbox__box--unchecked-hovered {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-bg);
+}
+
+.p-checkbox__box--disabled {
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-disabled);
+}
+
+.p-checkbox__check {
+    @apply w-3 h-3 transition-all duration-150;
+    color: var(--color-primary-light);
+}
+
+.p-checkbox__check--disabled {
+    color: var(--color-text-disabled);
+}
+
+.p-checkbox__indeterminate {
+    @apply w-2.5 h-2.5 rounded-xs transition-all duration-150;
+    background-color: var(--color-primary-light);
+}
+
+.p-checkbox__indeterminate--disabled {
+    background-color: var(--color-text-disabled);
+}
+
+.p-checkbox__text {
+    @apply text-[13px] transition-colors duration-150;
+}
+
+.p-checkbox__text--normal {
+    color: var(--color-primary-light);
+}
+
+.p-checkbox__text--hovered {
+    color: var(--color-primary-hover);
+}
+
+.p-checkbox__text--disabled {
+    color: var(--color-text-disabled);
+}
+
+/* RadioButton Styles */
+.p-radiobutton {
+    @apply inline-flex items-center rounded-full border-none bg-transparent cursor-pointer outline-none transition-all duration-200;
+}
+
+.p-radiobutton:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-shadow-focus);
+}
+
+.p-radiobutton--normal {
+    @apply bg-transparent;
+}
+
+.p-radiobutton--hovered {
+    background-color: var(--color-primary-bg-solid);
+}
+
+.p-radiobutton--checked {
+    background-color: var(--color-primary-light);
+}
+
+.p-radiobutton--disabled {
+    background-color: var(--color-bg-gray);
+    @apply cursor-not-allowed;
+}
+
+.p-radiobutton__icon {
+    @apply w-4 h-4 mr-2 flex-shrink-0 transition-colors duration-200;
+}
+
+.p-radiobutton__icon--normal {
+    color: var(--color-primary-light);
+}
+
+.p-radiobutton__icon--checked {
+    color: var(--color-text-inverse);
+}
+
+.p-radiobutton__icon--disabled {
+    color: var(--color-text-disabled);
+}
+
+.p-radiobutton__text {
+    @apply text-[13px] whitespace-nowrap transition-colors duration-200;
+}
+
+.p-radiobutton__text--normal {
+    color: var(--color-primary-light);
+}
+
+.p-radiobutton__text--hovered {
+    color: var(--color-primary-hover);
+}
+
+.p-radiobutton__text--checked {
+    color: var(--color-text-inverse);
+}
+
+.p-radiobutton__text--disabled {
+    color: var(--color-text-disabled);
+}
+
+/* Slider Styles */
+.p-slider {
+    @apply relative w-full h-4 flex items-center cursor-pointer;
+}
+
+.p-slider--disabled {
+    @apply cursor-not-allowed;
+}
+
+.p-slider__track-bg {
+    @apply absolute w-full h-1 rounded-full;
+    background-color: var(--color-track-bg);
+}
+
+.p-slider__track-fill {
+    @apply absolute h-1 rounded-full;
+    background-color: var(--color-primary-light);
+}
+
+.p-slider__thumb {
+    @apply absolute w-2.5 h-2.5 rounded-full border transition-transform duration-150;
+    border-color: var(--color-primary-light);
+    background-color: var(--color-primary-bg-solid);
+}
+
+.p-slider__thumb--dragging {
+    @apply scale-125;
+}
+
+.p-slider__thumb--disabled {
+    background-color: var(--color-bg-disabled);
+    border-color: var(--color-border-disabled);
+}
+
+/* IconButton Styles */
+.p-iconbutton {
+    @apply inline-flex items-center justify-center rounded-full border-none bg-transparent cursor-pointer outline-none transition-all duration-150;
+}
+
+.p-iconbutton:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-shadow-focus);
+}
+
+.p-iconbutton--normal {
+    @apply bg-transparent;
+}
+
+.p-iconbutton--hovered {
+    background-color: var(--color-bg-hover);
+}
+
+.p-iconbutton--pressed {
+    background-color: var(--color-primary-bg-solid);
+}
+
+.p-iconbutton--disabled {
+    background-color: var(--color-bg-disabled);
+    @apply cursor-not-allowed;
+}
+
+.p-iconbutton__icon {
+    @apply transition-all duration-150;
+}
+
+.p-iconbutton__icon--normal {
+    color: var(--color-primary-light);
+}
+
+.p-iconbutton__icon--pressed {
+    color: var(--color-primary-hover);
+}
+
+.p-iconbutton__icon--disabled {
+    color: var(--color-text-disabled);
+}
+
+/* Card Styles */
+.p-card {
+    @apply relative overflow-hidden transition-all duration-300;
+    background-color: var(--color-bg);
+    backdrop-filter: blur(4px);
+}
+
+.p-card__header {
+    @apply flex items-center justify-between px-4 py-3;
+}
+
+.p-card__header--clickable {
+    @apply cursor-pointer;
+}
+
+.p-card__title {
+    @apply text-[13px] font-bold transition-colors duration-200;
+    color: var(--color-primary-light);
+}
+
+.p-card__title--hovered {
+    color: var(--color-primary-hover);
+}
+
+.p-card__arrow {
+    @apply w-3 h-3 flex-shrink-0 ml-2 transition-all duration-250;
+    color: var(--color-primary-light);
+}
+
+.p-card__arrow--hovered {
+    color: var(--color-primary-hover);
+}
+
+.p-card__content {
+    @apply px-4 pb-4 transition-all duration-300;
+}
+
+.p-card__content--swapped {
+    @apply opacity-0 pointer-events-none;
+}
+
+/* ComboBox Styles */
+.p-combobox {
+    @apply relative;
+}
+
+.p-combobox__container {
+    @apply flex items-center border rounded-[3px] transition-all duration-200;
+}
+
+.p-combobox__container--normal {
+    border-color: var(--color-primary-lighter);
+    background-color: var(--color-bg);
+}
+
+.p-combobox__container--hovered {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-bg-hover);
+}
+
+.p-combobox__container--active {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-bg-hover);
+}
+
+.p-combobox__container--disabled {
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-disabled);
+}
+
+.p-combobox__input {
+    @apply flex-1 px-3 py-2 text-[13px] bg-transparent border-none outline-none;
+}
+
+.p-combobox__input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.p-combobox__dropdown {
+    @apply absolute z-50 w-full mt-1 py-1 rounded-[3px] max-h-60 overflow-auto;
+    background-color: var(--color-bg-solid);
+    border: 1px solid var(--color-primary-lighter);
+    box-shadow: 0 10px 15px var(--color-shadow);
+}
+
+.p-combobox__option {
+    @apply px-3 py-2 text-[13px] cursor-pointer transition-all duration-150;
+}
+
+.p-combobox__option--selected {
+    background-color: var(--color-primary-bg-solid);
+    color: var(--color-primary-hover);
+}
+
+.p-combobox__option--normal {
+    color: var(--color-text-primary);
+}
+
+.p-combobox__option--normal:hover {
+    background-color: var(--color-bg-hover);
+    color: var(--color-primary-light);
+}
+
+/* ExtraButton Styles */
+.p-extrabutton {
+    @apply relative w-10 h-10 rounded-full overflow-hidden border-none bg-transparent cursor-pointer outline-none transition-transform duration-200;
+}
+
+.p-extrabutton:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-shadow-focus);
+}
+
+.p-extrabutton--disabled {
+    @apply cursor-not-allowed opacity-50;
+}
+
+.p-extrabutton__bg {
+    @apply absolute inset-0 rounded-full transition-colors duration-150;
+    background-color: var(--color-primary-light);
+    box-shadow: 0 0 10px var(--color-shadow);
+}
+
+.p-extrabutton__bg--pressed {
+    background-color: var(--color-primary-hover);
+}
+
+/* ExtraTextButton Styles */
+.p-extratextbutton {
+    @apply relative inline-flex items-center gap-3 px-5 py-2.5 rounded-full overflow-hidden border-none bg-transparent cursor-pointer outline-none transition-transform duration-150;
+}
+
+.p-extratextbutton:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-shadow-focus);
+}
+
+.p-extratextbutton--disabled {
+    @apply cursor-not-allowed opacity-50;
+}
+
+.p-extratextbutton__bg {
+    @apply absolute inset-0 rounded-full transition-colors duration-150;
+    background-color: var(--color-primary-light);
+    box-shadow: 0 0 10px var(--color-shadow);
+}
+
+.p-extratextbutton__bg--pressed {
+    background-color: var(--color-primary-hover);
+}
+
+/* Hint Styles */
+.p-hint {
+    @apply flex items-center justify-between border-l-[3px] rounded-r-sm;
+}
+
+.p-hint--blue {
+    border-left-color: var(--color-primary-light);
+    background-color: var(--color-primary-bg);
+}
+
+.p-hint--blue .p-hint__text {
+    color: var(--color-primary);
+}
+
+.p-hint--blue .p-hint__close {
+    color: var(--color-primary-light);
+}
+
+.p-hint--red {
+    border-left-color: var(--color-danger-hover);
+    background-color: var(--color-danger-bg);
+}
+
+.p-hint--red .p-hint__text {
+    color: var(--color-danger);
+}
+
+.p-hint--red .p-hint__close {
+    color: var(--color-danger-hover);
+}
+
+.p-hint--yellow {
+    border-left-color: var(--color-warning);
+    background-color: var(--color-warning-bg);
+}
+
+.p-hint--yellow .p-hint__text {
+    color: var(--color-warning);
+}
+
+.p-hint--yellow .p-hint__close {
+    color: var(--color-warning);
+}
+
+/* ListItem Styles */
+.p-listitem {
+    @apply flex items-center h-[42px] px-2 rounded-[3px] cursor-pointer select-none transition-all duration-150;
+}
+
+.p-listitem--disabled {
+    @apply cursor-not-allowed opacity-50;
+}
+
+.p-listitem--hovered {
+    background-color: var(--color-bg-hover);
+}
+
+.p-listitem__indicator--checked {
+    background-color: var(--color-primary-light);
+}
+
+.p-listitem__icon--checked {
+    color: var(--color-primary-light);
+}
+
+.p-listitem__icon--normal {
+    color: var(--color-text-secondary);
+}
+
+.p-listitem__icon--hovered {
+    color: var(--color-primary-lighter);
+}
+
+.p-listitem__title--checked {
+    color: var(--color-primary-hover);
+    @apply font-medium;
+}
+
+.p-listitem__title--normal {
+    color: var(--color-text-primary);
+}
+
+.p-listitem__title--hovered {
+    color: var(--color-primary-light);
+}
+
+.p-listitem__info {
+    color: var(--color-text-secondary);
+}
+
+/* SearchBox Styles */
+.p-searchbox {
+    @apply relative flex items-center h-10 rounded-[5px] border transition-all duration-200;
+    background-color: var(--color-bg);
+    backdrop-filter: blur(4px);
+}
+
+.p-searchbox--normal {
+    border-color: var(--color-primary-lighter);
+}
+
+.p-searchbox--focused {
+    border-color: var(--color-primary-light);
+}
+
+.p-searchbox--disabled {
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-disabled);
+}
+
+.p-searchbox__icon {
+    color: var(--color-primary-light);
+}
+
+.p-searchbox__icon--disabled {
+    color: var(--color-text-disabled);
+}
+
+.p-searchbox__input {
+    @apply flex-1 h-full bg-transparent border-none outline-none text-[13px];
+}
+
+.p-searchbox__input--normal {
+    color: var(--color-text-primary);
+}
+
+.p-searchbox__input--normal::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.p-searchbox__input--disabled {
+    color: var(--color-text-disabled);
+}
+
+.p-searchbox__clear {
+    color: var(--color-primary-light);
+}
+
+.p-searchbox__clear:hover {
+    color: var(--color-primary-hover);
+    background-color: var(--color-bg-hover);
+}
+
+.p-searchbox__button {
+    background-color: var(--color-primary-light);
+    color: var(--color-text-inverse);
+}
+
+.p-searchbox__button:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+}
+
+.p-searchbox__button:disabled {
+    background-color: var(--color-bg-gray);
+    color: var(--color-text-disabled);
+}

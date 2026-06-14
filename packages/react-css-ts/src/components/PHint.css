@@ -4,7 +4,8 @@
     justify-content: space-between;
     border-left-width: 3px;
     border-left-style: solid;
-    border-radius: 0 4px 4px 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .phint__text {
@@ -19,10 +20,10 @@
     padding: 8px;
     margin-right: 8px;
     border-radius: 50%;
+    background: transparent;
     border: none;
-    background: none;
     cursor: pointer;
-    transition: background-color 150ms ease;
+    transition: background-color 150ms;
 }
 
 .phint__close:hover {
@@ -32,4 +33,46 @@
 .phint__close-icon {
     width: 16px;
     height: 16px;
+}
+
+/* Theme: Blue */
+.phint--blue {
+    border-left-color: var(--color-primary-light);
+    background-color: var(--color-primary-bg);
+}
+
+.phint--blue .phint__text {
+    color: var(--color-primary);
+}
+
+.phint--blue .phint__close {
+    color: var(--color-primary-light);
+}
+
+/* Theme: Red */
+.phint--red {
+    border-left-color: var(--color-danger-hover);
+    background-color: var(--color-danger-bg);
+}
+
+.phint--red .phint__text {
+    color: var(--color-danger);
+}
+
+.phint--red .phint__close {
+    color: var(--color-danger-hover);
+}
+
+/* Theme: Yellow */
+.phint--yellow {
+    border-left-color: var(--color-warning);
+    background-color: var(--color-warning-bg);
+}
+
+.phint--yellow .phint__text {
+    color: var(--color-warning);
+}
+
+.phint--yellow .phint__close {
+    color: var(--color-warning);
 }

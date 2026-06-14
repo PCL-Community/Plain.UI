@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, watch } from "vue";
 import {
     PButton,
     PCheckBox,
@@ -33,6 +33,8 @@ const ICONS = {
     close: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z",
     download: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z",
     upload: "M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5v-2z",
+    sun: "M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V22h-2v5.76zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z",
+    moon: "M9 2c-1.05 0-2.05.16-3 .46 1.69 1.23 2.8 3.24 2.8 5.54 0 3.87-3.13 7-7 7-1.06 0-2.06-.16-3-.46 1.69 4.38 5.91 7.46 10.8 7.46 6.63 0 12-5.37 12-12S15.63 2 9 2z",
 };
 
 // 下拉框选项
@@ -53,11 +55,77 @@ const cardSwapped = ref(false);
 const comboValue = ref("");
 const extraButtonProgress = ref(65);
 const searchValue = ref("");
+
+// 主题状态
+const theme = ref("light");
+const colorScheme = ref("sky");
+
+// 颜色方案选项
+const colorOptions = ["sky", "cat", "dead"];
+
+// 应用主题
+const applyTheme = () => {
+    const root = document.documentElement;
+    root.className = `${theme.value} color-${colorScheme.value}`;
+};
+
+onMounted(() => {
+    applyTheme();
+});
+
+watch([theme, colorScheme], () => {
+    applyTheme();
+});
+
+// 切换主题
+const toggleTheme = () => {
+    theme.value = theme.value === "light" ? "dark" : "light";
+};
+
+// 获取颜色方案对应的颜色值
+const getColorValue = (color) => {
+    const colorMap = {
+        sky: "#60a5fa",
+        cat: "#5787d9",
+        dead: "#536ecc",
+    };
+    return colorMap[color] || "#60a5fa";
+};
 </script>
 
 <template>
     <div class="playground">
+        <!-- 主题切换器 -->
+        <div class="theme-switcher">
+            <!-- 主题切换按钮 -->
+            <button
+                class="theme-toggle-btn"
+                @click="toggleTheme"
+                :title="theme === 'light' ? '切换到暗色主题' : '切换到亮色主题'"
+            >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path :d="theme === 'light' ? ICONS.moon : ICONS.sun" />
+                </svg>
+            </button>
+
+            <!-- 颜色方案切换 -->
+            <div class="color-scheme-container">
+                <button
+                    v-for="color in colorOptions"
+                    :key="color"
+                    class="color-scheme-btn"
+                    :class="{ active: colorScheme === color }"
+                    :style="{ background: getColorValue(color) }"
+                    @click="colorScheme = color"
+                    :title="`颜色方案: ${color}`"
+                />
+            </div>
+        </div>
+
         <h1>Plain UI - Vue + CSS + JavaScript</h1>
+        <p class="theme-status">
+            当前主题: {{ theme === 'light' ? '亮色' : '暗色' }} | 颜色方案: {{ colorScheme }}
+        </p>
 
         <!-- PButton Section -->
         <section>
@@ -81,7 +149,6 @@ const searchValue = ref("");
                 <PCheckBox
                     :Text="checkBoxText"
                     :Checked="checkBoxChecked"
-                    @change="(checked) => (checkBoxChecked = checked)"
                 />
                 <PCheckBox Text="禁用状态" :IsEnabled="false" />
                 <PCheckBox Text="已选中禁用" :Checked="true" :IsEnabled="false" />
@@ -91,12 +158,10 @@ const searchValue = ref("");
                     Text="三态复选框"
                     :IsThreeState="true"
                     :Checked="checkBoxChecked"
-                    @change="(checked) => (checkBoxChecked = checked)"
                 />
                 <PTextBox
                     Placeholder="输入复选框文本"
                     :Text="checkBoxText"
-                    @change="(val) => (checkBoxText = val)"
                     style="width: 200px"
                 />
             </div>
@@ -109,8 +174,6 @@ const searchValue = ref("");
                 <PTextBox
                     Placeholder="请输入内容..."
                     :Text="textBoxValue"
-                    @change="(val) => (textBoxValue = val)"
-                    @press-enter="() => alert(`输入内容: ${textBoxValue}`)"
                 />
                 <PTextBox Placeholder="带提示文本" HintText="这是提示文本" />
                 <PTextBox Text="禁用状态" :IsEnabled="false" />
@@ -130,31 +193,30 @@ const searchValue = ref("");
             <h2>PSlider 滑块</h2>
             <div class="demo-col" style="max-width: 500px">
                 <div>
-                    <label style="font-size: 14px; color: #666; margin-bottom: 8px; display: block">
+                    <label class="slider-label">
                         基础滑块: {{ sliderValue }}
                     </label>
-                    <PSlider :Value="sliderValue" @change="(val) => (sliderValue = val)" :Min="0" :Max="100" />
+                    <PSlider :Value="sliderValue" :Min="0" :Max="100" />
                 </div>
                 <div>
-                    <label style="font-size: 14px; color: #666; margin-bottom: 8px; display: block">
+                    <label class="slider-label">
                         带格式化提示
                     </label>
                     <PSlider
                         :Value="sliderValue"
-                        @change="(val) => (sliderValue = val)"
                         :Min="0"
                         :Max="100"
                         :GetHintText="(v) => `${v}%`"
                     />
                 </div>
                 <div>
-                    <label style="font-size: 14px; color: #666; margin-bottom: 8px; display: block">
+                    <label class="slider-label">
                         步长 10
                     </label>
-                    <PSlider :Value="sliderValue" @change="(val) => (sliderValue = val)" :Min="0" :Max="100" :Step="10" />
+                    <PSlider :Value="sliderValue" :Min="0" :Max="100" :Step="10" />
                 </div>
                 <div>
-                    <label style="font-size: 14px; color: #666; margin-bottom: 8px; display: block">
+                    <label class="slider-label">
                         禁用状态
                     </label>
                     <PSlider :Value="50" :IsEnabled="false" />
@@ -169,17 +231,14 @@ const searchValue = ref("");
                 <PRadioButton
                     Text="选项一"
                     :Checked="selectedRadio === 'option1'"
-                    @change="() => (selectedRadio = 'option1')"
                 />
                 <PRadioButton
                     Text="选项二"
                     :Checked="selectedRadio === 'option2'"
-                    @change="() => (selectedRadio = 'option2')"
                 />
                 <PRadioButton
                     Text="选项三"
                     :Checked="selectedRadio === 'option3'"
-                    @change="() => (selectedRadio = 'option3')"
                 />
                 <PRadioButton Text="禁用选项" :IsEnabled="false" />
             </div>
@@ -188,13 +247,11 @@ const searchValue = ref("");
                     Text="带图标"
                     :Logo="ICONS.home"
                     :Checked="selectedRadio === 'icon1'"
-                    @change="() => (selectedRadio = 'icon1')"
                 />
                 <PRadioButton
                     Text="设置"
                     :Logo="ICONS.settings"
                     :Checked="selectedRadio === 'icon2'"
-                    @change="() => (selectedRadio = 'icon2')"
                 />
             </div>
         </section>
@@ -203,12 +260,12 @@ const searchValue = ref("");
         <section>
             <h2>PIconButton 图标按钮</h2>
             <div class="demo-row">
-                <PIconButton :Logo="ICONS.home" @click="() => alert('点击了首页')" />
-                <PIconButton :Logo="ICONS.settings" @click="() => alert('点击了设置')" />
-                <PIconButton :Logo="ICONS.search" @click="() => alert('点击了搜索')" />
-                <PIconButton :Logo="ICONS.add" @click="() => alert('点击了添加')" />
-                <PIconButton :Logo="ICONS.delete" @click="() => alert('点击了删除')" />
-                <PIconButton :Logo="ICONS.edit" @click="() => alert('点击了编辑')" />
+                <PIconButton :Logo="ICONS.home" />
+                <PIconButton :Logo="ICONS.settings" />
+                <PIconButton :Logo="ICONS.search" />
+                <PIconButton :Logo="ICONS.add" />
+                <PIconButton :Logo="ICONS.delete" />
+                <PIconButton :Logo="ICONS.edit" />
             </div>
             <div class="demo-row">
                 <PIconButton :Logo="ICONS.home" :LogoScale="20" ToolTip="大尺寸" />
@@ -222,18 +279,18 @@ const searchValue = ref("");
             <h2>PCard 卡片</h2>
             <div class="demo-col" style="max-width: 500px">
                 <PCard Title="普通卡片">
-                    <p style="font-size: 13px; color: #666">这是卡片的内容区域，可以放置任何内容。</p>
+                    <p class="card-content">这是卡片的内容区域，可以放置任何内容。</p>
                 </PCard>
 
-                <PCard Title="可折叠卡片" :CanSwap="true" :IsSwapped="cardSwapped" @swap="(val) => (cardSwapped = val)">
+                <PCard Title="可折叠卡片" :CanSwap="true" :IsSwapped="cardSwapped">
                     <div>
-                        <p style="font-size: 13px; color: #666; margin-bottom: 10px">点击标题栏可以折叠/展开卡片。</p>
+                        <p class="card-content" style="margin-bottom: 10px">点击标题栏可以折叠/展开卡片。</p>
                         <PButton Text="卡片内的按钮" />
                     </div>
                 </PCard>
 
                 <PCard Title="禁用动画的卡片" :HasMouseAnimation="false">
-                    <p style="font-size: 13px; color: #666">这个卡片禁用了鼠标悬停动画效果。</p>
+                    <p class="card-content">这个卡片禁用了鼠标悬停动画效果。</p>
                 </PCard>
             </div>
         </section>
@@ -243,24 +300,23 @@ const searchValue = ref("");
             <h2>PComboBox 下拉框</h2>
             <div class="demo-col" style="max-width: 500px">
                 <div>
-                    <label style="font-size: 14px; color: #666; margin-bottom: 8px; display: block">
+                    <label class="slider-label">
                         基础下拉框
                     </label>
                     <PComboBox
                         :Items="COMBO_OPTIONS"
                         :Text="comboValue"
-                        @change="(val) => (comboValue = val)"
                         HintText="请选择一个选项"
                     />
                 </div>
                 <div>
-                    <label style="font-size: 14px; color: #666; margin-bottom: 8px; display: block">
+                    <label class="slider-label">
                         可编辑下拉框
                     </label>
                     <PComboBox :Items="COMBO_OPTIONS" :IsEditable="true" HintText="输入或选择" />
                 </div>
                 <div>
-                    <label style="font-size: 14px; color: #666; margin-bottom: 8px; display: block">
+                    <label class="slider-label">
                         禁用状态
                     </label>
                     <PComboBox :Items="COMBO_OPTIONS" HintText="禁用状态" :IsEnabled="false" />
@@ -272,19 +328,18 @@ const searchValue = ref("");
         <section>
             <h2>PExtraButton 扩展按钮</h2>
             <div class="demo-row">
-                <PExtraButton :Logo="ICONS.add" ToolTip="添加" @click="() => alert('点击了扩展按钮')" />
+                <PExtraButton :Logo="ICONS.add" ToolTip="添加" />
                 <PExtraButton :Logo="ICONS.download" ToolTip="下载" :ShowProgress="true" :Progress="extraButtonProgress" />
                 <PExtraButton :Logo="ICONS.close" ToolTip="关闭" :IsEnabled="false" />
             </div>
             <div class="demo-row">
                 <PSlider
                     :Value="extraButtonProgress"
-                    @change="(val) => (extraButtonProgress = val)"
                     :Min="0"
                     :Max="100"
                     style="width: 200px"
                 />
-                <span style="font-size: 14px; color: #666">进度: {{ extraButtonProgress }}%</span>
+                <span class="progress-text">进度: {{ extraButtonProgress }}%</span>
             </div>
         </section>
 
@@ -292,7 +347,7 @@ const searchValue = ref("");
         <section>
             <h2>PExtraTextButton 扩展文本按钮</h2>
             <div class="demo-row">
-                <PExtraTextButton Text="添加项目" :Logo="ICONS.add" @click="() => alert('点击了扩展文本按钮')" />
+                <PExtraTextButton Text="添加项目" :Logo="ICONS.add" />
                 <PExtraTextButton Text="上传文件" :Logo="ICONS.upload" />
                 <PExtraTextButton Text="下载" :Logo="ICONS.download" />
                 <PExtraTextButton Text="禁用状态" :Logo="ICONS.close" :IsEnabled="false" />
@@ -314,7 +369,7 @@ const searchValue = ref("");
         <!-- PIconTextButton Section -->
         <section>
             <h2>PIconTextButton 图标文本按钮</h2>
-            <div class="demo-row" style="background: #4A90E2; padding: 16px; border-radius: 8px">
+            <div class="demo-row icon-text-btn-row">
                 <PIconTextButton Text="首页" :Logo="ICONS.home" />
                 <PIconTextButton Text="设置" :Logo="ICONS.settings" />
                 <PIconTextButton Text="收藏" :Logo="ICONS.star" />
@@ -331,19 +386,16 @@ const searchValue = ref("");
                     Info="副标题信息"
                     :Logo="ICONS.folder"
                     :Checked="selectedRadio === 'list1'"
-                    @click="() => (selectedRadio = 'list1')"
                 />
                 <PListItem
                     Title="列表项二"
                     :Logo="ICONS.star"
                     :Checked="selectedRadio === 'list2'"
-                    @click="() => (selectedRadio = 'list2')"
                 />
                 <PListItem
                     Title="列表项三"
                     Info="带副标题"
                     :Checked="selectedRadio === 'list3'"
-                    @click="() => (selectedRadio = 'list3')"
                 />
                 <PListItem Title="禁用项" :IsEnabled="false" />
             </div>
@@ -363,7 +415,7 @@ const searchValue = ref("");
                     <PLoading Text="失败" State="error" />
                 </div>
                 <div style="text-align: center">
-                    <PLoading Text="自定义颜色" State="loading" Foreground="#10B981" />
+                    <PLoading Text="自定义颜色" State="loading" Foreground="var(--color-primary)" />
                 </div>
             </div>
         </section>
@@ -375,11 +427,8 @@ const searchValue = ref("");
                 <PSearchBox
                     Hint="搜索..."
                     :Text="searchValue"
-                    @change="(val) => (searchValue = val)"
-                    @search="(v) => alert(`搜索: ${v}`)"
-                    @clear="() => alert('已清除')"
                 />
-                <PSearchBox Hint="带搜索按钮..." :SearchButtonVisibility="true" @search="(v) => alert(`搜索: ${v}`)" />
+                <PSearchBox Hint="带搜索按钮..." :SearchButtonVisibility="true" />
                 <PSearchBox Hint="禁用状态" :IsEnabled="false" />
             </div>
         </section>
@@ -404,7 +453,7 @@ const searchValue = ref("");
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+    background: linear-gradient(135deg, var(--color-bg-gradient-start, #f0f7ff) 0%, var(--color-bg-gradient-end, #ffffff) 100%);
     min-height: 100vh;
 }
 
@@ -415,13 +464,13 @@ body {
 }
 
 h1 {
-    color: #4A90E2;
-    margin-bottom: 32px;
+    color: var(--color-primary, #4A90E2);
+    margin-bottom: 8px;
     font-size: 28px;
 }
 
 h2 {
-    color: #4A90E2;
+    color: var(--color-primary, #4A90E2);
     margin: 24px 0 16px;
     font-size: 20px;
 }
@@ -429,10 +478,10 @@ h2 {
 section {
     margin-bottom: 48px;
     padding: 24px;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--color-section-bg, rgba(255, 255, 255, 0.7));
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
-    border: 1px solid rgba(74, 144, 226, 0.2);
+    box-shadow: 0 2px 8px var(--color-shadow, rgba(74, 144, 226, 0.1));
+    border: 1px solid var(--color-border, rgba(74, 144, 226, 0.2));
 }
 
 .demo-row {
@@ -447,5 +496,86 @@ section {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+/* 主题切换器样式 */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 12px;
+    z-index: 1000;
+    background: var(--color-bg, #ffffff);
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border, rgba(74, 144, 226, 0.2));
+    backdrop-filter: blur(8px);
+}
+
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border, rgba(74, 144, 226, 0.2));
+    background: var(--color-bg, #ffffff);
+    cursor: pointer;
+    color: var(--color-primary, #4A90E2);
+}
+
+.color-scheme-container {
+    display: flex;
+    gap: 4px;
+}
+
+.color-scheme-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border, rgba(74, 144, 226, 0.2));
+    cursor: pointer;
+    transform: scale(1);
+    transition: all 200ms ease;
+}
+
+.color-scheme-btn.active {
+    border: 2px solid var(--color-primary, #4A90E2);
+    transform: scale(1.1);
+}
+
+/* 主题状态文本 */
+.theme-status {
+    color: var(--color-text-secondary, #666);
+    margin-bottom: 20px;
+}
+
+/* 滑块标签 */
+.slider-label {
+    font-size: 14px;
+    color: var(--color-text-secondary, #666);
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* 卡片内容 */
+.card-content {
+    font-size: 13px;
+    color: var(--color-text-secondary, #666);
+}
+
+/* 进度文本 */
+.progress-text {
+    font-size: 14px;
+    color: var(--color-text-secondary, #666);
+}
+
+/* 图标文本按钮行 */
+.icon-text-btn-row {
+    background: var(--color-primary-light, #4A90E2);
+    padding: 16px;
+    border-radius: 8px;
 }
 </style>

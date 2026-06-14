@@ -1,5 +1,11 @@
 # @pcl-community/plain-ui-react-css-js
 
+## 1.1.1
+
+### Patch Changes
+
+- Fix: Incompleted Theme System
+
 ## 1.1.0
 
 ### Minor Changes

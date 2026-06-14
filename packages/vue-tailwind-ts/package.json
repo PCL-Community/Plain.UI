@@ -1,6 +1,6 @@
 {
     "name": "@pcl-community/plain-ui-vue-tailwind-ts",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Plain UI - Vue 3 + TailwindCSS + TypeScript",
     "type": "module",
     "main": "./dist/index.umd.cjs",

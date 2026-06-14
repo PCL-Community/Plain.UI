@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     PButton,
     PCheckBox,
@@ -35,6 +35,8 @@ const ICONS = {
     close: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z",
     download: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z",
     upload: "M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5v-2z",
+    sun: "M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V22h-2v5.76zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z",
+    moon: "M9 2c-1.05 0-2.05.16-3 .46 1.69 1.23 2.8 3.24 2.8 5.54 0 3.87-3.13 7-7 7-1.06 0-2.06-.16-3-.46 1.69 4.38 5.91 7.46 10.8 7.46 6.63 0 12-5.37 12-12S15.63 2 9 2z",
 };
 
 // 下拉框选项
@@ -44,6 +46,76 @@ const COMBO_OPTIONS = [
     { Value: "option3", Label: "选项三" },
     { Value: "option4", Label: "选项四" },
 ];
+
+// 主题切换组件属性类型
+type ThemeSwitcherProps = {
+    currentTheme: string;
+    currentColor: string;
+    onThemeChange: (theme: string) => void;
+    onColorChange: (color: string) => void;
+};
+
+// 主题切换组件
+const ThemeSwitcher = ({ currentTheme, currentColor, onThemeChange, onColorChange }: ThemeSwitcherProps) => {
+    return (
+        <div className="theme-switcher" style={{
+            position: "fixed",
+            top: "20px",
+            right: "20px",
+            display: "flex",
+            gap: "12px",
+            zIndex: 1000,
+            background: "var(--color-bg)",
+            padding: "12px 16px",
+            borderRadius: "8px",
+            border: "1px solid var(--color-border)",
+            backdropFilter: "blur(8px)",
+        }}>
+            {/* 主题切换按钮 */}
+            <button
+                onClick={() => onThemeChange(currentTheme === "light" ? "dark" : "light")}
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "50%",
+                    border: "1px solid var(--color-border)",
+                    background: "var(--color-bg)",
+                    cursor: "pointer",
+                    color: "var(--color-primary)",
+                }}
+                title={currentTheme === "light" ? "切换到暗色主题" : "切换到亮色主题"}
+            >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d={currentTheme === "light" ? ICONS.moon : ICONS.sun} />
+                </svg>
+            </button>
+
+            {/* 颜色方案切换 */}
+            <div style={{ display: "flex", gap: "4px" }}>
+                {["sky", "cat", "dead"].map((color) => (
+                    <button
+                        key={color}
+                        onClick={() => onColorChange(color)}
+                        style={{
+                            width: "36px",
+                            height: "36px",
+                            borderRadius: "50%",
+                            border: currentColor === color ? "2px solid var(--color-primary)" : "1px solid var(--color-border)",
+                            background: color === "sky" ? "#60a5fa" : color === "cat" ? "#5787d9" : "#536ecc",
+                            cursor: "pointer",
+                            transform: currentColor === color ? "scale(1.1)" : "scale(1)",
+                            transition: "all 200ms ease",
+                        }}
+                        title={`颜色方案: ${color}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
 
 function App() {
     const [buttonColorType, setButtonColorType] = useState<PButtonColorState>("Normal");
@@ -59,9 +131,30 @@ function App() {
     const [searchValue, setSearchValue] = useState("");
     const [hintType, setHintType] = useState<PHintTheme>("Blue");
 
+    // 主题状态
+    const [theme, setTheme] = useState("light");
+    const [colorScheme, setColorScheme] = useState("sky");
+
+    // 应用主题
+    useEffect(() => {
+        const root = document.documentElement;
+        root.className = `${theme} color-${colorScheme}`;
+    }, [theme, colorScheme]);
+
     return (
         <div className="playground">
+            {/* 主题切换器 */}
+            <ThemeSwitcher
+                currentTheme={theme}
+                currentColor={colorScheme}
+                onThemeChange={setTheme}
+                onColorChange={setColorScheme}
+            />
+
             <h1>Plain UI - React + CSS + TypeScript</h1>
+            <p style={{ color: "var(--color-text-secondary)", marginBottom: "20px" }}>
+                当前主题: {theme === "light" ? "亮色" : "暗色"} | 颜色方案: {colorScheme}
+            </p>
 
             {/* PButton Section */}
             <section>
@@ -85,7 +178,6 @@ function App() {
                     <PCheckBox
                         Text={checkBoxText}
                         Checked={checkBoxChecked}
-                        onChange={(checked) => setCheckBoxChecked(checked)}
                     />
                     <PCheckBox Text="禁用状态" IsEnabled={false} />
                     <PCheckBox Text="已选中禁用" Checked={true} IsEnabled={false} />
@@ -95,12 +187,10 @@ function App() {
                         Text="三态复选框"
                         IsThreeState
                         Checked={checkBoxChecked}
-                        onChange={(checked) => setCheckBoxChecked(checked)}
                     />
                     <PTextBox
                         Placeholder="输入复选框文本"
                         Text={checkBoxText}
-                        onChange={setCheckBoxText}
                         style={{ width: "200px" }}
                     />
                 </div>
@@ -113,8 +203,6 @@ function App() {
                     <PTextBox
                         Placeholder="请输入内容..."
                         Text={textBoxValue}
-                        onChange={setTextBoxValue}
-                        onPressEnter={() => alert(`输入内容: ${textBoxValue}`)}
                     />
                     <PTextBox Placeholder="带提示文本" HintText="这是提示文本" />
                     <PTextBox Text="禁用状态" IsEnabled={false} />
@@ -134,31 +222,30 @@ function App() {
                 <h2>PSlider 滑块</h2>
                 <div className="demo-col" style={{ maxWidth: "500px" }}>
                     <div>
-                        <label style={{ fontSize: "14px", color: "#666", marginBottom: "8px", display: "block" }}>
+                        <label style={{ fontSize: "14px", color: "var(--color-text-secondary)", marginBottom: "8px", display: "block" }}>
                             基础滑块: {sliderValue}
                         </label>
-                        <PSlider Value={sliderValue} onChange={setSliderValue} Min={0} Max={100} />
+                        <PSlider Value={sliderValue} Min={0} Max={100} />
                     </div>
                     <div>
-                        <label style={{ fontSize: "14px", color: "#666", marginBottom: "8px", display: "block" }}>
+                        <label style={{ fontSize: "14px", color: "var(--color-text-secondary)", marginBottom: "8px", display: "block" }}>
                             带格式化提示
                         </label>
                         <PSlider
                             Value={sliderValue}
-                            onChange={setSliderValue}
                             Min={0}
                             Max={100}
                             GetHintText={(v) => `${v}%`}
                         />
                     </div>
                     <div>
-                        <label style={{ fontSize: "14px", color: "#666", marginBottom: "8px", display: "block" }}>
+                        <label style={{ fontSize: "14px", color: "var(--color-text-secondary)", marginBottom: "8px", display: "block" }}>
                             步长 10
                         </label>
-                        <PSlider Value={sliderValue} onChange={setSliderValue} Min={0} Max={100} Step={10} />
+                        <PSlider Value={sliderValue} Min={0} Max={100} Step={10} />
                     </div>
                     <div>
-                        <label style={{ fontSize: "14px", color: "#666", marginBottom: "8px", display: "block" }}>
+                        <label style={{ fontSize: "14px", color: "var(--color-text-secondary)", marginBottom: "8px", display: "block" }}>
                             禁用状态
                         </label>
                         <PSlider Value={50} IsEnabled={false} />
@@ -173,17 +260,14 @@ function App() {
                     <PRadioButton
                         Text="选项一"
                         Checked={selectedRadio === "option1"}
-                        onChange={() => setSelectedRadio("option1")}
                     />
                     <PRadioButton
                         Text="选项二"
                         Checked={selectedRadio === "option2"}
-                        onChange={() => setSelectedRadio("option2")}
                     />
                     <PRadioButton
                         Text="选项三"
                         Checked={selectedRadio === "option3"}
-                        onChange={() => setSelectedRadio("option3")}
                     />
                     <PRadioButton Text="禁用选项" IsEnabled={false} />
                 </div>
@@ -192,13 +276,11 @@ function App() {
                         Text="带图标"
                         Logo={ICONS.home}
                         Checked={selectedRadio === "icon1"}
-                        onChange={() => setSelectedRadio("icon1")}
                     />
                     <PRadioButton
                         Text="设置"
                         Logo={ICONS.settings}
                         Checked={selectedRadio === "icon2"}
-                        onChange={() => setSelectedRadio("icon2")}
                     />
                 </div>
             </section>
@@ -207,12 +289,12 @@ function App() {
             <section>
                 <h2>PIconButton 图标按钮</h2>
                 <div className="demo-row">
-                    <PIconButton Logo={ICONS.home} onClick={() => alert("点击了首页")} />
-                    <PIconButton Logo={ICONS.settings} onClick={() => alert("点击了设置")} />
-                    <PIconButton Logo={ICONS.search} onClick={() => alert("点击了搜索")} />
-                    <PIconButton Logo={ICONS.add} onClick={() => alert("点击了添加")} />
-                    <PIconButton Logo={ICONS.delete} onClick={() => alert("点击了删除")} />
-                    <PIconButton Logo={ICONS.edit} onClick={() => alert("点击了编辑")} />
+                    <PIconButton Logo={ICONS.home} />
+                    <PIconButton Logo={ICONS.settings} />
+                    <PIconButton Logo={ICONS.search} />
+                    <PIconButton Logo={ICONS.add} />
+                    <PIconButton Logo={ICONS.delete} />
+                    <PIconButton Logo={ICONS.edit} />
                 </div>
                 <div className="demo-row">
                     <PIconButton Logo={ICONS.home} LogoScale={20} ToolTip="大尺寸" />
@@ -226,18 +308,18 @@ function App() {
                 <h2>PCard 卡片</h2>
                 <div className="demo-col" style={{ maxWidth: "500px" }}>
                     <PCard Title="普通卡片">
-                        <p style={{ fontSize: "13px", color: "#666" }}>这是卡片的内容区域，可以放置任何内容。</p>
+                        <p style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>这是卡片的内容区域，可以放置任何内容。</p>
                     </PCard>
 
-                    <PCard Title="可折叠卡片" CanSwap IsSwapped={cardSwapped} onSwap={setCardSwapped}>
+                    <PCard Title="可折叠卡片" CanSwap IsSwapped={cardSwapped}>
                         <div>
-                            <p style={{ fontSize: "13px", color: "#666", marginBottom: "10px" }}>点击标题栏可以折叠/展开卡片。</p>
+                            <p style={{ fontSize: "13px", color: "var(--color-text-secondary)", marginBottom: "10px" }}>点击标题栏可以折叠/展开卡片。</p>
                             <PButton Text="卡片内的按钮" />
                         </div>
                     </PCard>
 
                     <PCard Title="禁用动画的卡片" HasMouseAnimation={false}>
-                        <p style={{ fontSize: "13px", color: "#666" }}>这个卡片禁用了鼠标悬停动画效果。</p>
+                        <p style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>这个卡片禁用了鼠标悬停动画效果。</p>
                     </PCard>
                 </div>
             </section>
@@ -247,24 +329,23 @@ function App() {
                 <h2>PComboBox 下拉框</h2>
                 <div className="demo-col" style={{ maxWidth: "500px" }}>
                     <div>
-                        <label style={{ fontSize: "14px", color: "#666", marginBottom: "8px", display: "block" }}>
+                        <label style={{ fontSize: "14px", color: "var(--color-text-secondary)", marginBottom: "8px", display: "block" }}>
                             基础下拉框
                         </label>
                         <PComboBox
                             Items={COMBO_OPTIONS}
                             Text={comboValue}
-                            onChange={setComboValue}
                             HintText="请选择一个选项"
                         />
                     </div>
                     <div>
-                        <label style={{ fontSize: "14px", color: "#666", marginBottom: "8px", display: "block" }}>
+                        <label style={{ fontSize: "14px", color: "var(--color-text-secondary)", marginBottom: "8px", display: "block" }}>
                             可编辑下拉框
                         </label>
                         <PComboBox Items={COMBO_OPTIONS} IsEditable HintText="输入或选择" />
                     </div>
                     <div>
-                        <label style={{ fontSize: "14px", color: "#666", marginBottom: "8px", display: "block" }}>
+                        <label style={{ fontSize: "14px", color: "var(--color-text-secondary)", marginBottom: "8px", display: "block" }}>
                             禁用状态
                         </label>
                         <PComboBox Items={COMBO_OPTIONS} HintText="禁用状态" IsEnabled={false} />
@@ -276,7 +357,7 @@ function App() {
             <section>
                 <h2>PExtraButton 扩展按钮</h2>
                 <div className="demo-row">
-                    <PExtraButton Logo={ICONS.add} ToolTip="添加" onClick={() => alert("点击了扩展按钮")} />
+                    <PExtraButton Logo={ICONS.add} ToolTip="添加" />
                     <PExtraButton Logo={ICONS.download} ToolTip="下载" ShowProgress Progress={extraButtonProgress} />
                     <PExtraButton Logo={ICONS.close} ToolTip="关闭" IsEnabled={false} />
                 </div>
@@ -285,10 +366,9 @@ function App() {
                         Value={extraButtonProgress}
                         Min={0}
                         Max={100}
-                        onChange={setExtraButtonProgress}
                         style={{ width: "200px" }}
                     />
-                    <span style={{ fontSize: "14px", color: "#666" }}>进度: {extraButtonProgress}%</span>
+                    <span style={{ fontSize: "14px", color: "var(--color-text-secondary)" }}>进度: {extraButtonProgress}%</span>
                 </div>
             </section>
 
@@ -296,7 +376,7 @@ function App() {
             <section>
                 <h2>PExtraTextButton 扩展文本按钮</h2>
                 <div className="demo-row">
-                    <PExtraTextButton Text="添加项目" Logo={ICONS.add} onClick={() => alert("点击了扩展文本按钮")} />
+                    <PExtraTextButton Text="添加项目" Logo={ICONS.add} />
                     <PExtraTextButton Text="上传文件" Logo={ICONS.upload} />
                     <PExtraTextButton Text="下载" Logo={ICONS.download} />
                     <PExtraTextButton Text="禁用状态" Logo={ICONS.close} IsEnabled={false} />
@@ -318,7 +398,7 @@ function App() {
             {/* PIconTextButton Section */}
             <section>
                 <h2>PIconTextButton 图标文本按钮</h2>
-                <div className="demo-row" style={{ background: "#4A90E2", padding: "16px", borderRadius: "8px" }}>
+                <div className="demo-row" style={{ background: "var(--color-primary-light)", padding: "16px", borderRadius: "8px" }}>
                     <PIconTextButton Text="首页" Logo={ICONS.home} />
                     <PIconTextButton Text="设置" Logo={ICONS.settings} />
                     <PIconTextButton Text="收藏" Logo={ICONS.star} />
@@ -335,19 +415,16 @@ function App() {
                         Info="副标题信息"
                         Logo={ICONS.folder}
                         Checked={selectedRadio === "list1"}
-                        onClick={() => setSelectedRadio("list1")}
                     />
                     <PListItem
                         Title="列表项二"
                         Logo={ICONS.star}
                         Checked={selectedRadio === "list2"}
-                        onClick={() => setSelectedRadio("list2")}
                     />
                     <PListItem
                         Title="列表项三"
                         Info="带副标题"
                         Checked={selectedRadio === "list3"}
-                        onClick={() => setSelectedRadio("list3")}
                     />
                     <PListItem Title="禁用项" IsEnabled={false} />
                 </div>
@@ -367,7 +444,7 @@ function App() {
                         <PLoading Text="失败" State="error" />
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <PLoading Text="自定义颜色" State="loading" Foreground="#10B981" />
+                        <PLoading Text="自定义颜色" State="loading" Foreground="var(--color-primary)" />
                     </div>
                 </div>
             </section>
@@ -379,11 +456,8 @@ function App() {
                     <PSearchBox
                         Hint="搜索..."
                         Text={searchValue}
-                        onChange={setSearchValue}
-                        onSearch={(v) => alert(`搜索: ${v}`)}
-                        onClear={() => alert("已清除")}
                     />
-                    <PSearchBox Hint="带搜索按钮..." SearchButtonVisibility={true} onSearch={(v) => alert(`搜索: ${v}`)} />
+                    <PSearchBox Hint="带搜索按钮..." SearchButtonVisibility={true} />
                     <PSearchBox Hint="禁用状态" IsEnabled={false} />
                 </div>
             </section>

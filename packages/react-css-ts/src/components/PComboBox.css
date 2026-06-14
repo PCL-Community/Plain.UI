@@ -2,42 +2,25 @@
     position: relative;
 }
 
-.pcombobox__trigger {
+.pcombobox__container {
     display: flex;
     align-items: center;
-    border: 1px solid #93c5fd;
+    border: 1px solid;
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.5);
     transition: all 200ms ease;
-}
-
-.pcombobox__trigger.pcombobox--disabled {
-    background-color: #f3f4f6;
-    border-color: #9ca3af;
-}
-
-.pcombobox__trigger.pcombobox--active {
-    border-color: #3b82f6;
-    background-color: #eff6ff;
-}
-
-.pcombobox__trigger.pcombobox--hovered {
-    border-color: #60a5fa;
-    background-color: #eff6ff;
 }
 
 .pcombobox__input {
     flex: 1;
     padding: 8px 12px;
     font-size: 13px;
-    background-color: transparent;
+    background: transparent;
     border: none;
     outline: none;
-    color: #374151;
 }
 
 .pcombobox__input::placeholder {
-    color: #9ca3af;
+    color: var(--color-text-secondary);
 }
 
 .pcombobox__display {
@@ -46,31 +29,20 @@
     font-size: 13px;
     cursor: pointer;
     user-select: none;
-    color: #374151;
 }
 
 .pcombobox__arrow-btn {
     padding: 8px 12px;
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
-    transition: color 200ms ease;
-    color: #60a5fa;
-}
-
-.pcombobox__arrow-btn:hover:not(:disabled) {
-    color: #3b82f6;
-}
-
-.pcombobox__arrow-btn--disabled {
-    color: #9ca3af;
-    cursor: not-allowed;
+    transition: color 200ms;
 }
 
 .pcombobox__arrow {
     width: 16px;
     height: 16px;
-    transition: transform 200ms ease;
+    transition: transform 200ms;
 }
 
 .pcombobox__arrow--open {
@@ -83,10 +55,10 @@
     width: 100%;
     margin-top: 4px;
     padding: 4px 0;
-    background-color: white;
-    border: 1px solid #93c5fd;
+    background-color: var(--color-bg-solid);
+    border: 1px solid var(--color-primary-lighter);
     border-radius: 3px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px var(--color-shadow);
     max-height: 240px;
     overflow: auto;
 }
@@ -95,22 +67,69 @@
     padding: 8px 12px;
     font-size: 13px;
     cursor: pointer;
-    transition: all 150ms ease;
-    color: #374151;
-}
-
-.pcombobox__option:hover {
-    background-color: #eff6ff;
-    color: #60a5fa;
+    transition: all 150ms;
 }
 
 .pcombobox__option--selected {
-    background-color: #dbeafe;
-    color: #3b82f6;
+    background-color: var(--color-primary-bg-solid);
+    color: var(--color-primary-hover);
+}
+
+.pcombobox__option--normal {
+    color: var(--color-text-primary);
+}
+
+.pcombobox__option--normal:hover {
+    background-color: var(--color-bg-hover);
+    color: var(--color-primary-light);
 }
 
 .pcombobox__empty {
     padding: 8px 12px;
     font-size: 13px;
-    color: #9ca3af;
+    color: var(--color-text-secondary);
+}
+
+/* Container states */
+.pcombobox__container--normal {
+    border-color: var(--color-primary-lighter);
+    background-color: var(--color-bg);
+}
+
+.pcombobox__container--hovered {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-bg-hover);
+}
+
+.pcombobox__container--active {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-bg-hover);
+}
+
+.pcombobox__container--disabled {
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-disabled);
+}
+
+/* Text colors */
+.pcombobox__text--normal {
+    color: var(--color-text-primary);
+}
+
+.pcombobox__text--disabled {
+    color: var(--color-text-disabled);
+}
+
+/* Arrow button states */
+.pcombobox__arrow-btn--normal {
+    color: var(--color-primary-light);
+}
+
+.pcombobox__arrow-btn--normal:hover {
+    color: var(--color-primary-hover);
+}
+
+.pcombobox__arrow-btn--disabled {
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
 }

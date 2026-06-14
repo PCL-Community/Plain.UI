@@ -13,6 +13,44 @@
     --color-brush-semi-transparent: rgba(187, 247, 255, 0.004);
     --color-brush-bg0: rgba(74, 190, 255, 1);
     --color-brush-bg1: rgba(171, 240, 255, 0.733);
+
+    /* Semantic Colors */
+    --color-primary: rgba(0, 118, 255, 1);
+    --color-primary-hover: rgba(0, 97, 223, 1);
+    --color-primary-light: rgba(74, 190, 255, 1);
+    --color-primary-lighter: rgba(147, 197, 253, 1);
+    --color-primary-bg: rgba(239, 246, 255, 0.5);
+    --color-primary-bg-solid: rgba(219, 234, 254, 1);
+
+    --color-danger: rgba(239, 68, 68, 1);
+    --color-danger-hover: rgba(248, 113, 113, 1);
+    --color-danger-bg: rgba(254, 242, 242, 0.5);
+    --color-danger-bg-solid: rgba(254, 242, 242, 1);
+
+    --color-success: rgba(34, 197, 94, 1);
+    --color-warning: rgba(234, 179, 8, 1);
+    --color-warning-bg: rgba(254, 252, 232, 1);
+
+    --color-text-primary: rgba(55, 65, 81, 1);
+    --color-text-secondary: rgba(156, 163, 175, 1);
+    --color-text-disabled: rgba(156, 163, 175, 1);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+
+    --color-border: rgba(147, 197, 253, 1);
+    --color-border-hover: rgba(96, 165, 250, 1);
+    --color-border-focus: rgba(59, 130, 246, 1);
+    --color-border-disabled: rgba(156, 163, 175, 1);
+
+    --color-bg: rgba(255, 255, 255, 0.5);
+    --color-bg-solid: rgba(255, 255, 255, 1);
+    --color-bg-hover: rgba(239, 246, 255, 0.5);
+    --color-bg-disabled: rgba(243, 244, 246, 1);
+    --color-bg-gray: rgba(229, 231, 235, 1);
+
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-shadow-focus: rgba(96, 165, 250, 0.5);
+
+    --color-track-bg: rgba(191, 219, 254, 0.3);
 }
 
 /* ========== Light Theme | Color Cat ========== */
@@ -28,6 +66,44 @@
     --color-brush-semi-transparent: rgba(213, 227, 247, 0.004);
     --color-brush-bg0: rgba(87, 135, 217, 1);
     --color-brush-bg1: rgba(193, 214, 245, 0.733);
+
+    /* Semantic Colors */
+    --color-primary: rgba(4, 48, 179, 1);
+    --color-primary-hover: rgba(2, 31, 119, 1);
+    --color-primary-light: rgba(87, 135, 217, 1);
+    --color-primary-lighter: rgba(175, 202, 240, 1);
+    --color-primary-bg: rgba(240, 244, 252, 0.5);
+    --color-primary-bg-solid: rgba(225, 235, 250, 1);
+
+    --color-danger: rgba(220, 38, 38, 1);
+    --color-danger-hover: rgba(239, 68, 68, 1);
+    --color-danger-bg: rgba(254, 242, 242, 0.5);
+    --color-danger-bg-solid: rgba(254, 242, 242, 1);
+
+    --color-success: rgba(34, 197, 94, 1);
+    --color-warning: rgba(234, 179, 8, 1);
+    --color-warning-bg: rgba(254, 252, 232, 1);
+
+    --color-text-primary: rgba(55, 65, 81, 1);
+    --color-text-secondary: rgba(156, 163, 175, 1);
+    --color-text-disabled: rgba(156, 163, 175, 1);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+
+    --color-border: rgba(175, 202, 240, 1);
+    --color-border-hover: rgba(87, 135, 217, 1);
+    --color-border-focus: rgba(22, 72, 188, 1);
+    --color-border-disabled: rgba(156, 163, 175, 1);
+
+    --color-bg: rgba(255, 255, 255, 0.5);
+    --color-bg-solid: rgba(255, 255, 255, 1);
+    --color-bg-hover: rgba(240, 244, 252, 0.5);
+    --color-bg-disabled: rgba(243, 244, 246, 1);
+    --color-bg-gray: rgba(229, 231, 235, 1);
+
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-shadow-focus: rgba(87, 135, 217, 0.5);
+
+    --color-track-bg: rgba(175, 202, 240, 0.3);
 }
 
 /* ========== Light Theme | Color Dead ========== */
@@ -43,6 +119,44 @@
     --color-brush-semi-transparent: rgba(185, 194, 216, 0.004);
     --color-brush-bg0: rgba(83, 110, 204, 1);
     --color-brush-bg1: rgba(169, 182, 216, 0.733);
+
+    /* Semantic Colors */
+    --color-primary: rgba(14, 32, 187, 1);
+    --color-primary-hover: rgba(9, 21, 125, 1);
+    --color-primary-light: rgba(83, 110, 204, 1);
+    --color-primary-lighter: rgba(154, 170, 213, 1);
+    --color-primary-bg: rgba(242, 244, 250, 0.5);
+    --color-primary-bg-solid: rgba(230, 234, 245, 1);
+
+    --color-danger: rgba(220, 38, 38, 1);
+    --color-danger-hover: rgba(239, 68, 68, 1);
+    --color-danger-bg: rgba(254, 242, 242, 0.5);
+    --color-danger-bg-solid: rgba(254, 242, 242, 1);
+
+    --color-success: rgba(34, 197, 94, 1);
+    --color-warning: rgba(234, 179, 8, 1);
+    --color-warning-bg: rgba(254, 252, 232, 1);
+
+    --color-text-primary: rgba(55, 65, 81, 1);
+    --color-text-secondary: rgba(156, 163, 175, 1);
+    --color-text-disabled: rgba(156, 163, 175, 1);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+
+    --color-border: rgba(154, 170, 213, 1);
+    --color-border-hover: rgba(83, 110, 204, 1);
+    --color-border-focus: rgba(29, 54, 190, 1);
+    --color-border-disabled: rgba(156, 163, 175, 1);
+
+    --color-bg: rgba(255, 255, 255, 0.5);
+    --color-bg-solid: rgba(255, 255, 255, 1);
+    --color-bg-hover: rgba(242, 244, 250, 0.5);
+    --color-bg-disabled: rgba(243, 244, 246, 1);
+    --color-bg-gray: rgba(229, 231, 235, 1);
+
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-shadow-focus: rgba(83, 110, 204, 0.5);
+
+    --color-track-bg: rgba(154, 170, 213, 0.3);
 }
 
 /* ========== Dark Theme | Color Sky ========== */
@@ -58,6 +172,44 @@
     --color-brush-semi-transparent: rgba(0, 36, 86, 0.004);
     --color-brush-bg0: rgba(0, 84, 194, 1);
     --color-brush-bg1: rgba(0, 39, 95, 0.733);
+
+    /* Semantic Colors */
+    --color-primary: rgba(0, 126, 255, 1);
+    --color-primary-hover: rgba(46, 173, 255, 1);
+    --color-primary-light: rgba(0, 84, 194, 1);
+    --color-primary-lighter: rgba(0, 43, 103, 1);
+    --color-primary-bg: rgba(0, 43, 103, 0.5);
+    --color-primary-bg-solid: rgba(0, 39, 95, 1);
+
+    --color-danger: rgba(248, 113, 113, 1);
+    --color-danger-hover: rgba(252, 165, 165, 1);
+    --color-danger-bg: rgba(127, 29, 29, 0.5);
+    --color-danger-bg-solid: rgba(69, 10, 10, 1);
+
+    --color-success: rgba(74, 222, 128, 1);
+    --color-warning: rgba(250, 204, 21, 1);
+    --color-warning-bg: rgba(66, 58, 6, 1);
+
+    --color-text-primary: rgba(229, 231, 235, 1);
+    --color-text-secondary: rgba(156, 163, 175, 1);
+    --color-text-disabled: rgba(107, 114, 128, 1);
+    --color-text-inverse: rgba(0, 0, 0, 1);
+
+    --color-border: rgba(0, 84, 194, 1);
+    --color-border-hover: rgba(0, 126, 255, 1);
+    --color-border-focus: rgba(46, 173, 255, 1);
+    --color-border-disabled: rgba(75, 85, 99, 1);
+
+    --color-bg: rgba(0, 36, 86, 0.5);
+    --color-bg-solid: rgba(0, 36, 86, 1);
+    --color-bg-hover: rgba(0, 43, 103, 0.5);
+    --color-bg-disabled: rgba(31, 41, 55, 1);
+    --color-bg-gray: rgba(55, 65, 81, 1);
+
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-shadow-focus: rgba(0, 126, 255, 0.5);
+
+    --color-track-bg: rgba(0, 84, 194, 0.3);
 }
 
 /* ========== Dark Theme | Color Cat ========== */
@@ -73,6 +225,44 @@
     --color-brush-semi-transparent: rgba(2, 2, 3, 0.004);
     --color-brush-bg0: rgba(10, 24, 53, 1);
     --color-brush-bg1: rgba(2, 3, 5, 0.733);
+
+    /* Semantic Colors */
+    --color-primary: rgba(6, 55, 195, 1);
+    --color-primary-hover: rgba(35, 111, 255, 1);
+    --color-primary-light: rgba(10, 24, 53, 1);
+    --color-primary-lighter: rgba(22, 72, 188, 1);
+    --color-primary-bg: rgba(10, 24, 53, 0.5);
+    --color-primary-bg-solid: rgba(10, 24, 53, 1);
+
+    --color-danger: rgba(248, 113, 113, 1);
+    --color-danger-hover: rgba(252, 165, 165, 1);
+    --color-danger-bg: rgba(127, 29, 29, 0.5);
+    --color-danger-bg-solid: rgba(69, 10, 10, 1);
+
+    --color-success: rgba(74, 222, 128, 1);
+    --color-warning: rgba(250, 204, 21, 1);
+    --color-warning-bg: rgba(66, 58, 6, 1);
+
+    --color-text-primary: rgba(229, 231, 235, 1);
+    --color-text-secondary: rgba(156, 163, 175, 1);
+    --color-text-disabled: rgba(107, 114, 128, 1);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+
+    --color-border: rgba(22, 72, 188, 1);
+    --color-border-hover: rgba(35, 111, 255, 1);
+    --color-border-focus: rgba(6, 55, 195, 1);
+    --color-border-disabled: rgba(75, 85, 99, 1);
+
+    --color-bg: rgba(2, 2, 3, 0.5);
+    --color-bg-solid: rgba(2, 2, 3, 1);
+    --color-bg-hover: rgba(10, 24, 53, 0.5);
+    --color-bg-disabled: rgba(31, 41, 55, 1);
+    --color-bg-gray: rgba(55, 65, 81, 1);
+
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-shadow-focus: rgba(35, 111, 255, 0.5);
+
+    --color-track-bg: rgba(22, 72, 188, 0.3);
 }
 
 /* ========== Dark Theme | Color Dead ========== */
@@ -88,6 +278,44 @@
     --color-brush-semi-transparent: rgba(1, 2, 3, 0.004);
     --color-brush-bg0: rgba(11, 19, 52, 1);
     --color-brush-bg1: rgba(2, 2, 5, 0.733);
+
+    /* Semantic Colors */
+    --color-primary: rgba(16, 37, 203, 1);
+    --color-primary-hover: rgba(45, 83, 255, 1);
+    --color-primary-light: rgba(11, 19, 52, 1);
+    --color-primary-lighter: rgba(29, 54, 190, 1);
+    --color-primary-bg: rgba(11, 19, 52, 0.5);
+    --color-primary-bg-solid: rgba(11, 19, 52, 1);
+
+    --color-danger: rgba(248, 113, 113, 1);
+    --color-danger-hover: rgba(252, 165, 165, 1);
+    --color-danger-bg: rgba(127, 29, 29, 0.5);
+    --color-danger-bg-solid: rgba(69, 10, 10, 1);
+
+    --color-success: rgba(74, 222, 128, 1);
+    --color-warning: rgba(250, 204, 21, 1);
+    --color-warning-bg: rgba(66, 58, 6, 1);
+
+    --color-text-primary: rgba(229, 231, 235, 1);
+    --color-text-secondary: rgba(156, 163, 175, 1);
+    --color-text-disabled: rgba(107, 114, 128, 1);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+
+    --color-border: rgba(29, 54, 190, 1);
+    --color-border-hover: rgba(45, 83, 255, 1);
+    --color-border-focus: rgba(16, 37, 203, 1);
+    --color-border-disabled: rgba(75, 85, 99, 1);
+
+    --color-bg: rgba(1, 2, 3, 0.5);
+    --color-bg-solid: rgba(1, 2, 3, 1);
+    --color-bg-hover: rgba(11, 19, 52, 0.5);
+    --color-bg-disabled: rgba(31, 41, 55, 1);
+    --color-bg-gray: rgba(55, 65, 81, 1);
+
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-shadow-focus: rgba(45, 83, 255, 0.5);
+
+    --color-track-bg: rgba(29, 54, 190, 0.3);
 }
 
 /* ========== Default Theme (Light Sky) ========== */
@@ -103,4 +331,42 @@
     --color-brush-semi-transparent: rgba(187, 247, 255, 0.004);
     --color-brush-bg0: rgba(74, 190, 255, 1);
     --color-brush-bg1: rgba(171, 240, 255, 0.733);
+
+    /* Semantic Colors */
+    --color-primary: rgba(0, 118, 255, 1);
+    --color-primary-hover: rgba(0, 97, 223, 1);
+    --color-primary-light: rgba(74, 190, 255, 1);
+    --color-primary-lighter: rgba(147, 197, 253, 1);
+    --color-primary-bg: rgba(239, 246, 255, 0.5);
+    --color-primary-bg-solid: rgba(219, 234, 254, 1);
+
+    --color-danger: rgba(239, 68, 68, 1);
+    --color-danger-hover: rgba(248, 113, 113, 1);
+    --color-danger-bg: rgba(254, 242, 242, 0.5);
+    --color-danger-bg-solid: rgba(254, 242, 242, 1);
+
+    --color-success: rgba(34, 197, 94, 1);
+    --color-warning: rgba(234, 179, 8, 1);
+    --color-warning-bg: rgba(254, 252, 232, 1);
+
+    --color-text-primary: rgba(55, 65, 81, 1);
+    --color-text-secondary: rgba(156, 163, 175, 1);
+    --color-text-disabled: rgba(156, 163, 175, 1);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+
+    --color-border: rgba(147, 197, 253, 1);
+    --color-border-hover: rgba(96, 165, 250, 1);
+    --color-border-focus: rgba(59, 130, 246, 1);
+    --color-border-disabled: rgba(156, 163, 175, 1);
+
+    --color-bg: rgba(255, 255, 255, 0.5);
+    --color-bg-solid: rgba(255, 255, 255, 1);
+    --color-bg-hover: rgba(239, 246, 255, 0.5);
+    --color-bg-disabled: rgba(243, 244, 246, 1);
+    --color-bg-gray: rgba(229, 231, 235, 1);
+
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-shadow-focus: rgba(96, 165, 250, 0.5);
+
+    --color-track-bg: rgba(191, 219, 254, 0.3);
 }

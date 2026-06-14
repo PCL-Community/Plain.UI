@@ -4,45 +4,51 @@
     justify-content: center;
     border-radius: 50%;
     border: none;
-    background-color: transparent;
+    background: transparent;
     cursor: pointer;
     outline: none;
     transition: transform 80ms ease-out, background-color 150ms;
 }
 
 .piconbutton:focus-visible {
-    outline: 2px solid #60a5fa;
-    outline-offset: 2px;
-}
-
-.piconbutton--disabled {
-    background-color: #f3f4f6;
-    cursor: not-allowed;
-}
-
-.piconbutton--hovered {
-    background-color: #eff6ff;
-}
-
-.piconbutton--pressed {
-    background-color: #dbeafe;
-    transform: scale(0.92);
+    box-shadow: 0 0 0 2px var(--color-shadow-focus);
 }
 
 .piconbutton__icon {
     transition: transform 80ms ease-out, color 150ms;
-    color: #60a5fa;
 }
 
-.piconbutton--disabled .piconbutton__icon {
-    color: #9ca3af;
+/* Normal state */
+.piconbutton--normal {
+    background-color: transparent;
 }
 
-.piconbutton--hovered .piconbutton__icon {
-    color: #60a5fa;
+.piconbutton--hovered {
+    background-color: var(--color-bg-hover);
 }
 
-.piconbutton--pressed .piconbutton__icon {
-    color: #3b82f6;
-    transform: scale(0.95);
+.piconbutton--pressed {
+    background-color: var(--color-primary-bg-solid);
+}
+
+.piconbutton--disabled {
+    background-color: var(--color-bg-disabled);
+    cursor: not-allowed;
+}
+
+/* Icon colors */
+.piconbutton__icon--normal {
+    color: var(--color-primary-light);
+}
+
+.piconbutton__icon--hovered {
+    color: var(--color-primary-light);
+}
+
+.piconbutton__icon--pressed {
+    color: var(--color-primary-hover);
+}
+
+.piconbutton__icon--disabled {
+    color: var(--color-text-disabled);
 }
